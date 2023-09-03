@@ -14,11 +14,11 @@ void main() async {
   SharedPreferences pref = await SharedPreferences.getInstance();
   text = await pref.getBool('txt');
 
-  await Hive.initFlutter;
-  Hive.registerAdapter<Information>(InformationAdapter());
-  box = await Hive.openBox<Information>("info");
+  await Hive.initFlutter();
+  Hive.registerAdapter(InformationAdapter());
+  box = await Hive.openBox("info");
   runApp(MaterialApp(
-    home: text == true ? Main_Page() : Welcome(),
+    home:  Welcome(),
     debugShowCheckedModeBanner: false,
   ));
 }

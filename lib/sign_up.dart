@@ -6,8 +6,6 @@ import 'package:warachow/mainPage.dart';
 
 import 'main.dart';
 
-
-
 class Sign_Up extends StatefulWidget {
   const Sign_Up({super.key});
 
@@ -16,12 +14,11 @@ class Sign_Up extends StatefulWidget {
 }
 
 class _Sign_UpState extends State<Sign_Up> {
-
   TextEditingController loginContr = TextEditingController();
   TextEditingController passwordContr = TextEditingController();
 
-
   bool? text;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,9 +29,11 @@ class _Sign_UpState extends State<Sign_Up> {
           Image.asset(
             "assets/logomock.png",
           ),
-
           SizedBox(height: MediaQuery.of(context).size.height * 0.04),
-          Text("Registration",style: TextStyle(fontSize: 40,fontFamily: "EBG"),),
+          Text(
+            "Registration",
+            style: TextStyle(fontSize: 40, fontFamily: "EBG"),
+          ),
           SizedBox(height: MediaQuery.of(context).size.height * 0.04),
           Padding(
             padding: const EdgeInsets.all(10.0),
@@ -67,16 +66,27 @@ class _Sign_UpState extends State<Sign_Up> {
               ),
               child: MaterialButton(
                 onPressed: () async {
-                  if (loginContr.value.text != "" && passwordContr.value.text != ""){
-                    SharedPreferences pref = await SharedPreferences.getInstance();
-                    text = await pref.setBool('txt',true);
-                    Information info = Information(name: loginContr.value.text, password: passwordContr.value.text, email: "example@gmail.com", date_of_birth: "00-00-0000", address: "-");
-                    box.add(info);
-                    Navigator.push(context, CupertinoPageRoute(builder: (_) => Main_Page()));
-                  }else{
-                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("All fields must be filled")));
-                    SharedPreferences pref = await SharedPreferences.getInstance();
-                    text = await pref.setBool('txt',false);
+                  if (loginContr.value.text != "" &&
+                      passwordContr.value.text != "") {
+                    SharedPreferences pref =
+                        await SharedPreferences.getInstance();
+                    text = await pref.setBool('txt', true);
+
+                    Information information = Information(
+                        name: loginContr.value.text,
+                        password: passwordContr.value.text,
+                        email: "example@gmail.com",
+                        date_of_birth: "00-00-0000",
+                        address: "-");
+                    box.add(information);  print(box.get("info"));
+                    Navigator.push(context,
+                        CupertinoPageRoute(builder: (_) => Main_Page()));
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text("All fields must be filled")));
+                    SharedPreferences pref =
+                        await SharedPreferences.getInstance();
+                    text = await pref.setBool('txt', false);
                   }
                 },
                 color: Color(0xFFFF785B),
@@ -87,15 +97,16 @@ class _Sign_UpState extends State<Sign_Up> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text("Never Hungry Again!",
-                          style: TextStyle(fontSize: 20, color: Colors.white,fontFamily: "EBG")),
+                          style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.white,
+                              fontFamily: "EBG")),
                     ],
                   ),
                 ),
               )),
         ],
       ),
-
-
     );
   }
 }

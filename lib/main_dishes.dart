@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:warachow/profile.dart';
 
 class Main_Dishes extends StatefulWidget {
   const Main_Dishes({super.key});
@@ -175,7 +176,13 @@ class _Main_DishesState extends State<Main_Dishes> {
         child: Row(
           children: [
             SizedBox(width: MediaQuery.of(context).size.width * 0.27),
-            Icon(Icons.person, color: Colors.grey),
+            IconButton(
+                icon: Icon(Icons.person),
+                color: Colors.grey,
+                onPressed: () {
+                  Navigator.push(context, CupertinoPageRoute(builder: (_) => Profile()));
+                }),
+
             SizedBox(width: MediaQuery.of(context).size.width * 0.1),
             Icon(Icons.home, color: Colors.grey),
             SizedBox(width: MediaQuery.of(context).size.width * 0.1),
