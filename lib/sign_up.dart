@@ -1,7 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:warachow/information.dart';
 import 'package:warachow/mainPage.dart';
+
+import 'main.dart';
+
+
 
 class Sign_Up extends StatefulWidget {
   const Sign_Up({super.key});
@@ -14,6 +19,7 @@ class _Sign_UpState extends State<Sign_Up> {
 
   TextEditingController loginContr = TextEditingController();
   TextEditingController passwordContr = TextEditingController();
+
 
   bool? text;
   @override
@@ -35,7 +41,7 @@ class _Sign_UpState extends State<Sign_Up> {
             child: TextField(
               controller: loginContr,
               decoration: InputDecoration(
-                  hintText: "Login or Nickname",
+                  hintText: "Your Name",
                   border: OutlineInputBorder(
                       gapPadding: 20,
                       borderRadius: BorderRadius.all(Radius.circular(20)))),
@@ -46,6 +52,7 @@ class _Sign_UpState extends State<Sign_Up> {
             padding: const EdgeInsets.all(10.0),
             child: TextField(
               controller: passwordContr,
+              obscureText: true,
               decoration: const InputDecoration(
                   hintText: "Password",
                   border: OutlineInputBorder(
@@ -63,8 +70,9 @@ class _Sign_UpState extends State<Sign_Up> {
                   if (loginContr.value.text != "" && passwordContr.value.text != ""){
                     SharedPreferences pref = await SharedPreferences.getInstance();
                     text = await pref.setBool('txt',true);
+                    Information info = Information(name: loginContr.value.text, password: passwordContr.value.text, email: "example@gmail.com", date_of_birth: "00-00-0000", address: "-");
+                    box.add(info);
                     Navigator.push(context, CupertinoPageRoute(builder: (_) => Main_Page()));
-
                   }else{
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("All fields must be filled")));
                     SharedPreferences pref = await SharedPreferences.getInstance();
