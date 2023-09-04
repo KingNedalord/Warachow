@@ -70,46 +70,64 @@ class _Main_DishesState extends State<Main_Dishes> {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            expandedHeight: 180,
+            collapsedHeight: MediaQuery.of(context).size.height * 0.25,
+            // expandedHeight:MediaQuery.of(context).size.he ight*0.25,
+            //expandedHeight: 300,
             backgroundColor: Color(0xFFFF785B),
             leading: Text(""),
-            flexibleSpace: Column(
-              children: [
-                Text(
-                  "Main Dishes",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontFamily: "EBG",
-                      fontWeight: FontWeight.w500,
-                      fontSize: 40),
+            pinned: true,
+            // shape: ,
+            flexibleSpace: Container(
+              decoration: BoxDecoration(
+                color: Colors.pink,
+
+                border: Border.all(width: 0,color: Colors.transparent),
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(10),
+                  bottomRight: Radius.circular(10),
                 ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.02,
-                ),
-                Text(
-                    "Find the best selling dishes. All\n     "
-                    "meals are prepared fresh",
+              ),
+              child: Column(
+                children: [
+                  Text(
+                    "Main Dishes",
                     style: TextStyle(
-                        color: Colors.white, fontFamily: "EBG", fontSize: 17)),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.009,
-                ),
-                Container(
-                  width: MediaQuery.of(context).size.width * 0.7,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(20)),
-                      color: Colors.white),
-                  child: TextField(
-                    decoration: InputDecoration(
-                        hintText: "Search Menu",
-                        prefixIcon: Icon(Icons.search_outlined),
-                        border: OutlineInputBorder(
-                            gapPadding: 20,
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(20)))),
+                        color: Colors.white,
+                        fontFamily: "EBG",
+                        fontWeight: FontWeight.w500,
+                        fontSize: 40),
                   ),
-                ),
-              ],
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.02,
+                  ),
+                  Text(
+                      "Find the best selling dishes. All\n"
+                      "meals are prepared fresh",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontFamily: "EBG",
+                          fontSize: 17)),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.009,
+                  ),
+                  Container(
+                    width: MediaQuery.of(context).size.width * 0.7,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                        color: Colors.white),
+                    child: TextField(
+                      decoration: InputDecoration(
+                          hintText: "Search Menu",
+                          prefixIcon: Icon(Icons.search_outlined),
+                          border: OutlineInputBorder(
+                              gapPadding: 20,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20)))),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
           SliverGrid.builder(
@@ -180,9 +198,9 @@ class _Main_DishesState extends State<Main_Dishes> {
                 icon: Icon(Icons.person),
                 color: Colors.grey,
                 onPressed: () {
-                  Navigator.push(context, CupertinoPageRoute(builder: (_) => Profile()));
+                  Navigator.push(
+                      context, CupertinoPageRoute(builder: (_) => Profile()));
                 }),
-
             SizedBox(width: MediaQuery.of(context).size.width * 0.1),
             Icon(Icons.home, color: Colors.grey),
             SizedBox(width: MediaQuery.of(context).size.width * 0.1),
