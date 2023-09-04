@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:warachow/best_sellers.dart';
 
+import 'information.dart';
 import 'main_dishes.dart';
 
 class Main_Page extends StatefulWidget {
@@ -12,6 +14,14 @@ class Main_Page extends StatefulWidget {
 }
 
 class _Main_PageState extends State<Main_Page> {
+  late Box<Information> box;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    box = Hive.box("info");
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,6 +36,13 @@ class _Main_PageState extends State<Main_Page> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Row(
+              children: [
+                SizedBox(width: MediaQuery.of(context).size.width * 0.05),
+                Text(box.getAt(0)!.name,
+                    style: TextStyle(fontSize: 25, color: Colors.white,fontWeight: FontWeight.w500))
+              ],
+            ),
             Row(
               children: [
                 Container(
@@ -72,9 +89,10 @@ class _Main_PageState extends State<Main_Page> {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-              expandedHeight: 220,
+              toolbarHeight: MediaQuery.of(context).size.height * 0.25,
               backgroundColor: Color(0xFFFF785B),
               leading: Text(""),
+              pinned: true,
               flexibleSpace: Column(
                 children: [
                   Text(

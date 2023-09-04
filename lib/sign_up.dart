@@ -15,12 +15,12 @@ class Sign_Up extends StatefulWidget {
 }
 
 class _Sign_UpState extends State<Sign_Up> {
-  late Box<Information> box;
+
   TextEditingController loginContr = TextEditingController();
   TextEditingController passwordContr = TextEditingController();
 
   bool? text;
-
+  late Box<Information> box;
   @override
   void initState() {
     // TODO: implement initState

@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:warachow/profile.dart';
+
+import 'information.dart';
 
 class Best_Sellers extends StatefulWidget {
   const Best_Sellers({super.key});
@@ -10,6 +13,14 @@ class Best_Sellers extends StatefulWidget {
 }
 
 class _Best_SellersState extends State<Best_Sellers> {
+  late Box<Information> box;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    box = Hive.box("info");
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,6 +35,13 @@ class _Best_SellersState extends State<Best_Sellers> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Row(
+              children: [
+                SizedBox(width: MediaQuery.of(context).size.width * 0.05),
+                Text(box.getAt(0)!.name,
+                    style: TextStyle(fontSize: 25, color: Colors.white,fontWeight: FontWeight.w500))
+              ],
+            ),
             Row(
               children: [
                 Container(
@@ -70,9 +88,10 @@ class _Best_SellersState extends State<Best_Sellers> {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            expandedHeight: 180,
+            toolbarHeight: MediaQuery.of(context).size.height * 0.25,
             backgroundColor: Color(0xFFFF785B),
             leading: Text(""),
+            pinned: true,
             flexibleSpace: Column(
               children: [
                 Text(
@@ -118,6 +137,8 @@ class _Best_SellersState extends State<Best_Sellers> {
             itemCount: 6,
             itemBuilder: (context, index) {
               return Container(
+                margin: EdgeInsets.only(left: index % 2 == 0 ? 12:0,right: index % 2 == 0 ? 0:12,),
+                decoration: BoxDecoration(border: Border(bottom: BorderSide(color: Colors.grey[400]!,width: 4))),
                 child: Column(
                   children: [
                     ClipRRect(
@@ -173,20 +194,25 @@ class _Best_SellersState extends State<Best_Sellers> {
       bottomNavigationBar: Container(
         width: MediaQuery.of(context).size.width,
         height: 70,
-        child: Row(
+        child: Column(
           children: [
-            SizedBox(width: MediaQuery.of(context).size.width * 0.27),
-            IconButton(
-                icon: Icon(Icons.person),
-                color: Colors.grey,
-                onPressed: () {
-                  Navigator.push(context, CupertinoPageRoute(builder: (_) => Profile()));
-                }),
-            SizedBox(width: MediaQuery.of(context).size.width * 0.1),
-            Icon(Icons.home, color: Colors.grey),
-            SizedBox(width: MediaQuery.of(context).size.width * 0.1),
-            Icon(Icons.shopping_cart, color: Colors.grey),
-            SizedBox(width: MediaQuery.of(context).size.width * 0.23),
+            Divider(thickness: 0.3,color: Colors.grey[400],indent: 15,endIndent: 15),
+            Row(
+              children: [
+                SizedBox(width: MediaQuery.of(context).size.width * 0.27),
+                IconButton(
+                    icon: Icon(Icons.person),
+                    color: Colors.grey,
+                    onPressed: () {
+                      Navigator.push(context, CupertinoPageRoute(builder: (_) => Profile()));
+                    }),
+                SizedBox(width: MediaQuery.of(context).size.width * 0.1),
+                IconButton(icon:Icon(Icons.home, color: Colors.grey),onPressed: (){Navigator.pop(context);},),
+                SizedBox(width: MediaQuery.of(context).size.width * 0.1),
+                Icon(Icons.shopping_cart, color: Colors.grey),
+                SizedBox(width: MediaQuery.of(context).size.width * 0.23),
+              ],
+            ),
           ],
         ),
       ),

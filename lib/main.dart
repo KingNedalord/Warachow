@@ -6,8 +6,8 @@ import 'package:warachow/welcome.dart';
 import 'information.dart';
 import 'mainPage.dart';
 
-
 late Box box;
+
 void main() async {
   bool? text;
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,7 +18,7 @@ void main() async {
   Hive.registerAdapter<Information>(InformationAdapter());
   box = await Hive.openBox<Information>("info");
   runApp(MaterialApp(
-    home:  Welcome(),
+    home: text == true ? Main_Page() : Welcome(),
     debugShowCheckedModeBanner: false,
   ));
 }
