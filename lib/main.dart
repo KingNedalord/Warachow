@@ -15,8 +15,8 @@ void main() async {
   text = await pref.getBool('txt');
 
   await Hive.initFlutter();
-  Hive.registerAdapter(InformationAdapter());
-  box = await Hive.openBox("info");
+  Hive.registerAdapter<Information>(InformationAdapter());
+  box = await Hive.openBox<Information>("info");
   runApp(MaterialApp(
     home:  Welcome(),
     debugShowCheckedModeBanner: false,

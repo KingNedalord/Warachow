@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 
+import 'information.dart';
 import 'main.dart';
 
 class Profile extends StatefulWidget {
@@ -10,6 +12,14 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+  late Box<Information> box;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    box = Hive.box("info");
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,7 +58,13 @@ class _ProfileState extends State<Profile> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Transform.rotate(angle: 100,child: Text(box.get("info")!.name,style: TextStyle(color: Colors.black),),)
+                Transform.rotate(
+                  angle: 100,
+                  child: Text(
+                    box.getAt(0)!.name,
+                    style: TextStyle(color: Colors.black),
+                  ),
+                )
               ],
             ),
           )

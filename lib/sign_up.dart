@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:warachow/information.dart';
 import 'package:warachow/mainPage.dart';
 
-import 'main.dart';
+// import 'main.dart';
 
 class Sign_Up extends StatefulWidget {
   const Sign_Up({super.key});
@@ -14,11 +15,19 @@ class Sign_Up extends StatefulWidget {
 }
 
 class _Sign_UpState extends State<Sign_Up> {
+  late Box<Information> box;
   TextEditingController loginContr = TextEditingController();
   TextEditingController passwordContr = TextEditingController();
 
   bool? text;
 
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    box = Hive.box("info");
+  }
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(

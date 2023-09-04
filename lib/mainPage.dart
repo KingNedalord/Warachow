@@ -72,7 +72,7 @@ class _Main_PageState extends State<Main_Page> {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-              expandedHeight: 180,
+              expandedHeight: 220,
               backgroundColor: Color(0xFFFF785B),
               leading: Text(""),
               flexibleSpace: Column(
@@ -94,7 +94,8 @@ class _Main_PageState extends State<Main_Page> {
                       style: TextStyle(
                           color: Colors.white,
                           fontFamily: "EBG",
-                          fontSize: 17)),
+                          fontSize: 20)),
+                  SizedBox(height: 5),
                   Container(
                     width: MediaQuery.of(context).size.width * 0.7,
                     decoration: BoxDecoration(
