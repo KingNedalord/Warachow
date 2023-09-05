@@ -5,7 +5,7 @@ import 'package:warachow/best_sellers.dart';
 import 'package:warachow/loyalty_points.dart';
 import 'package:warachow/profile.dart';
 
-import 'information.dart';
+import 'adapters/information.dart';
 import 'main_dishes.dart';
 
 class Main_Page extends StatefulWidget {

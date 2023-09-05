@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:warachow/profile.dart';
 
-import 'information.dart';
+import 'adapters/information.dart';
 import 'mainPage.dart';
 
 class Loyalty_Points extends StatefulWidget {

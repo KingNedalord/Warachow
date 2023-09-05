@@ -4,9 +4,9 @@ import 'package:hive/hive.dart';
 import 'package:warachow/meal_information2.dart';
 import 'package:warachow/profile.dart';
 
-import 'information.dart';
+import 'adapters/information.dart';
 import 'loyalty_points.dart';
-import 'meals_list.dart';
+import 'adapters/meals_list.dart';
 
 class Best_Sellers extends StatefulWidget {
   const Best_Sellers({super.key});

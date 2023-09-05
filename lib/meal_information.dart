@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 
-import 'meals_list.dart';
+import 'adapters/meals_list.dart';
 
 class Meal_information extends StatefulWidget {
   final meal_index;
@@ -24,6 +25,13 @@ class _Meal_informationState extends State<Meal_information> {
     Meals_list(meal_label: "Butterfly Pasta", price: 8, image: "assets/16.png")
   ];
 
+  late Box<Meals_list> meals_box;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    meals_box = Hive.box("meal");
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -148,27 +156,38 @@ class _Meal_informationState extends State<Meal_information> {
                   Container(
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height * 0.05,
-
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(40),
                         color: Color(0xFFFF785B)),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Text(
-                          "💶 ${meals[widget.meal_index].price}",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w500,
-                              fontSize: 18),
-                        ),
-                        Text("Order Now ->",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w500,
-                              fontSize: 18)),
-                        Icon(Icons.shopping_cart,color: Colors.white,)
-                      ],
+                    child: MaterialButton(
+                      onPressed: () {
+                        Meals_list meals_list = Meals_list(
+                            meal_label: meals[widget.meal_index].meal_label,
+                            price: meals[widget.meal_index].price,
+                            image: meals[widget.meal_index].image);
+                        meals_box.add(meals_list);
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Text(
+                            "💶 ${meals[widget.meal_index].price}",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w500,
+                                fontSize: 18),
+                          ),
+                          Text("Order Now ->",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 18)),
+                          Icon(
+                            Icons.shopping_cart,
+                            color: Colors.white,
+                          )
+                        ],
+                      ),
                     ),
                   )
                 ],

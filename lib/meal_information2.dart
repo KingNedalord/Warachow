@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'meals_list.dart';
+import 'adapters/meals_list.dart';
 
 class Meal_Information2 extends StatefulWidget {
   final meal_index2;

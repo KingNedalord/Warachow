@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:warachow/information.dart';
+import 'package:warachow/adapters/information.dart';
 import 'package:warachow/mainPage.dart';
 
 // import 'main.dart';

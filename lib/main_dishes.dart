@@ -4,9 +4,9 @@ import 'package:hive/hive.dart';
 import 'package:warachow/meal_information.dart';
 import 'package:warachow/profile.dart';
 
-import 'information.dart';
+import 'adapters/information.dart';
 import 'loyalty_points.dart';
-import 'meals_list.dart';
+import 'adapters/meals_list.dart';
 
 class Main_Dishes extends StatefulWidget {
   const Main_Dishes({super.key});

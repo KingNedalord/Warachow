@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:warachow/mainPage.dart';
 
-import 'information.dart';
+import 'adapters/information.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
