@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:warachow/meal_information.dart';
 import 'package:warachow/profile.dart';
 
 import 'information.dart';
 import 'loyalty_points.dart';
+import 'meals_list.dart';
 
 class Main_Dishes extends StatefulWidget {
   const Main_Dishes({super.key});
@@ -22,6 +24,15 @@ class _Main_DishesState extends State<Main_Dishes> {
     super.initState();
     box = Hive.box("info");
   }
+
+  List<Meals_list> meals = [
+    Meals_list(meal_label: "Fried Rice", price: 5, image: "assets/11.png"),
+    Meals_list(meal_label: "Jollof Rice", price: 6, image: "assets/12.png"),
+    Meals_list(meal_label: "Pasta Rigatoni", price: 4, image: "assets/13.png"),
+    Meals_list(meal_label: "Pizza Peperoni", price: 8, image: "assets/14.png"),
+    Meals_list(meal_label: "Amala", price: 10, image: "assets/15.png"),
+    Meals_list(meal_label: "Butterfly Pasta", price: 8, image: "assets/16.png")
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -153,29 +164,26 @@ class _Main_DishesState extends State<Main_Dishes> {
             ),
           ),
           SliverGrid.builder(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-            itemCount: 6,
+            gridDelegate:
+                SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+            itemCount: meals.length,
             itemBuilder: (context, index) {
               return Container(
-                margin: EdgeInsets.only(left: index % 2 == 0 ? 12:0,right: index % 2 == 0 ? 0:12,),
-                decoration: BoxDecoration(border: Border(bottom: BorderSide(color: Colors.grey[400]!,width: 4))),
+                margin: EdgeInsets.only(
+                  left: index % 2 == 0 ? 12 : 0,
+                  right: index % 2 == 0 ? 0 : 12,
+                ),
+                decoration: BoxDecoration(
+                    border: Border(
+                        bottom:
+                            BorderSide(color: Colors.grey[400]!, width: 4))),
                 child: Column(
                   children: [
                     ClipRRect(
                       borderRadius: BorderRadius.circular(20), // Image border
                       child: SizedBox.fromSize(
                           size: Size.fromRadius(48), // Image radius
-                          child: Image.asset(index == 0
-                              ? "assets/11.png"
-                              : index == 1
-                                  ? "assets/12.png"
-                                  : index == 2
-                                      ? "assets/13.png"
-                                      : index == 3
-                                          ? "assets/14.png"
-                                          : index == 4
-                                              ? "assets/15.png"
-                                              : "assets/16.png")),
+                          child: Image.asset(meals[index].image)),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -183,23 +191,21 @@ class _Main_DishesState extends State<Main_Dishes> {
                         Column(
                           children: [
                             Text(
-                              index == 0
-                                  ? "Fried Rice"
-                                  : index == 1
-                                      ? "Jollof Rice"
-                                      : index == 2
-                                          ? "Pasta Rigatoni"
-                                          : index == 3
-                                              ? "Pizza Peperoni"
-                                              : index == 4
-                                                  ? "Amala"
-                                                  : "Butterfly Pasta",
+                              meals[index].meal_label,
                               style: TextStyle(fontSize: 20),
                             ),
                             Container(
                                 width: 110,
                                 height: 50,
-                                child: Image.asset("assets/buy_now.png"))
+                                child: MaterialButton(
+                                    onPressed: () {
+                                      Navigator.push(
+                                          context,
+                                          CupertinoPageRoute(
+                                              builder: (_) => Meal_information(
+                                                  meal_index: index)));
+                                    },
+                                    child: Image.asset("assets/buy_now.png")))
                           ],
                         )
                       ],
@@ -216,7 +222,11 @@ class _Main_DishesState extends State<Main_Dishes> {
         height: 70,
         child: Column(
           children: [
-            Divider(thickness: 0.3,color: Colors.grey[400],indent: 15,endIndent: 15),
+            Divider(
+                thickness: 0.3,
+                color: Colors.grey[400],
+                indent: 15,
+                endIndent: 15),
             Row(
               children: [
                 SizedBox(width: MediaQuery.of(context).size.width * 0.27),
@@ -224,8 +234,8 @@ class _Main_DishesState extends State<Main_Dishes> {
                     icon: Icon(Icons.person),
                     color: Colors.grey,
                     onPressed: () {
-                      Navigator.push(
-                          context, CupertinoPageRoute(builder: (_) => Profile()));
+                      Navigator.push(context,
+                          CupertinoPageRoute(builder: (_) => Profile()));
                     }),
                 SizedBox(width: MediaQuery.of(context).size.width * 0.1),
                 IconButton(

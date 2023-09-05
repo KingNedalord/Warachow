@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:warachow/loyalty_points.dart';
 import 'package:warachow/welcome.dart';
 import 'information.dart';
 import 'mainPage.dart';

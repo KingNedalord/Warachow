@@ -5,6 +5,7 @@ import 'package:warachow/profile.dart';
 
 import 'information.dart';
 import 'loyalty_points.dart';
+import 'meals_list.dart';
 
 class Best_Sellers extends StatefulWidget {
   const Best_Sellers({super.key});
@@ -15,12 +16,22 @@ class Best_Sellers extends StatefulWidget {
 
 class _Best_SellersState extends State<Best_Sellers> {
   late Box<Information> box;
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     box = Hive.box("info");
   }
+
+  List<Meals_list> meals = [
+    Meals_list(meal_label: "Beef Burger", price: 5, image: "assets/21.png"),
+    Meals_list(meal_label: "Shawarma", price: 6, image: "assets/22.png"),
+    Meals_list(meal_label: "Pizza Peperoni", price: 8, image: "assets/24.png"),
+    Meals_list(meal_label: "Cheesy Bread", price: 3, image: "assets/14.png"),
+    Meals_list(meal_label: "Amala", price: 10, image: "assets/15.png"),
+    Meals_list(meal_label: "Jollof Spaghetti", price: 5, image: "assets/26.png")
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +51,10 @@ class _Best_SellersState extends State<Best_Sellers> {
               children: [
                 SizedBox(width: MediaQuery.of(context).size.width * 0.05),
                 Text(box.getAt(0)!.name,
-                    style: TextStyle(fontSize: 25, color: Colors.white,fontWeight: FontWeight.w500))
+                    style: TextStyle(
+                        fontSize: 25,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w500))
               ],
             ),
             Row(
@@ -146,46 +160,31 @@ class _Best_SellersState extends State<Best_Sellers> {
           SliverGrid.builder(
             gridDelegate:
                 SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-            itemCount: 6,
+            itemCount: meals.length,
             itemBuilder: (context, index) {
               return Container(
-                margin: EdgeInsets.only(left: index % 2 == 0 ? 12:0,right: index % 2 == 0 ? 0:12,),
-                decoration: BoxDecoration(border: Border(bottom: BorderSide(color: Colors.grey[400]!,width: 4))),
+                margin: EdgeInsets.only(
+                  left: index % 2 == 0 ? 12 : 0,
+                  right: index % 2 == 0 ? 0 : 12,
+                ),
+                decoration: BoxDecoration(
+                    border: Border(
+                        bottom:
+                            BorderSide(color: Colors.grey[400]!, width: 4))),
                 child: Column(
                   children: [
                     ClipRRect(
                       borderRadius: BorderRadius.circular(20), // Image border
                       child: SizedBox.fromSize(
                           size: Size.fromRadius(48), // Image radius
-                          child: Image.asset(index == 0
-                              ? "assets/21.png"
-                              : index == 1
-                                  ? "assets/22.png"
-                                  : index == 2
-                                      ? "assets/24.png"
-                                      : index == 3
-                                          ? "assets/14.png"
-                                          : index == 4
-                                              ? "assets/15.png"
-                                              : "assets/26.png")),
+                          child: Image.asset(meals[index].image)),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Column(
                           children: [
-                            Text(
-                              index == 0
-                                  ? "Beef Burger"
-                                  : index == 1
-                                      ? "Shawarma"
-                                      : index == 2
-                                          ? "Pizza Peperoni"
-                                          : index == 3
-                                              ? "Cheesy Bread"
-                                              : index == 4
-                                                  ? "Amala"
-                                                  : "Jollof Spaghetti",
+                            Text(meals[index].meal_label,
                               style: TextStyle(fontSize: 20),
                             ),
                             Container(
@@ -208,7 +207,11 @@ class _Best_SellersState extends State<Best_Sellers> {
         height: 70,
         child: Column(
           children: [
-            Divider(thickness: 0.3,color: Colors.grey[400],indent: 15,endIndent: 15),
+            Divider(
+                thickness: 0.3,
+                color: Colors.grey[400],
+                indent: 15,
+                endIndent: 15),
             Row(
               children: [
                 SizedBox(width: MediaQuery.of(context).size.width * 0.27),
@@ -216,10 +219,16 @@ class _Best_SellersState extends State<Best_Sellers> {
                     icon: Icon(Icons.person),
                     color: Colors.grey,
                     onPressed: () {
-                      Navigator.push(context, CupertinoPageRoute(builder: (_) => Profile()));
+                      Navigator.push(context,
+                          CupertinoPageRoute(builder: (_) => Profile()));
                     }),
                 SizedBox(width: MediaQuery.of(context).size.width * 0.1),
-                IconButton(icon:Icon(Icons.home, color: Colors.grey),onPressed: (){Navigator.pop(context);},),
+                IconButton(
+                  icon: Icon(Icons.home, color: Colors.grey),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),
                 SizedBox(width: MediaQuery.of(context).size.width * 0.1),
                 Icon(Icons.shopping_cart, color: Colors.grey),
                 SizedBox(width: MediaQuery.of(context).size.width * 0.23),
