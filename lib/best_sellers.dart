@@ -4,6 +4,7 @@ import 'package:hive/hive.dart';
 import 'package:warachow/profile.dart';
 
 import 'information.dart';
+import 'loyalty_points.dart';
 
 class Best_Sellers extends StatefulWidget {
   const Best_Sellers({super.key});
@@ -48,8 +49,13 @@ class _Best_SellersState extends State<Best_Sellers> {
                     width: 50,
                     height: 50,
                     child: Image.asset("assets/profile.png")),
-                Text("Profile",
-                    style: TextStyle(fontSize: 25, color: Colors.white))
+                TextButton(
+                    child: Text("Profile",
+                        style: TextStyle(fontSize: 25, color: Colors.white)),
+                    onPressed: () {
+                      Navigator.push(context,
+                          CupertinoPageRoute(builder: (_) => Profile()));
+                    })
               ],
             ),
             Row(
@@ -68,8 +74,13 @@ class _Best_SellersState extends State<Best_Sellers> {
                     width: 50,
                     height: 50,
                     child: Image.asset("assets/medal.png")),
-                Text("Loyalty Points",
-                    style: TextStyle(fontSize: 25, color: Colors.white))
+                TextButton(
+                    child: Text("Loyalty Points",
+                        style: TextStyle(fontSize: 25, color: Colors.white)),
+                    onPressed: () {
+                      Navigator.push(context,
+                          CupertinoPageRoute(builder: (_) => Loyalty_Points()));
+                    })
               ],
             ),
             Row(
@@ -106,8 +117,9 @@ class _Best_SellersState extends State<Best_Sellers> {
                   height: MediaQuery.of(context).size.height * 0.02,
                 ),
                 Text(
-                    "Everyone's favourite dishes and\n                       "
+                    "Everyone's favourite dishes and\n"
                     "takeouts.",
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                         color: Colors.white, fontFamily: "EBG", fontSize: 17)),
                 SizedBox(

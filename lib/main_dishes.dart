@@ -4,6 +4,7 @@ import 'package:hive/hive.dart';
 import 'package:warachow/profile.dart';
 
 import 'information.dart';
+import 'loyalty_points.dart';
 
 class Main_Dishes extends StatefulWidget {
   const Main_Dishes({super.key});
@@ -52,8 +53,13 @@ class _Main_DishesState extends State<Main_Dishes> {
                     width: 50,
                     height: 50,
                     child: Image.asset("assets/profile.png")),
-                Text("Profile",
-                    style: TextStyle(fontSize: 23, color: Colors.white))
+                TextButton(
+                    child: Text("Profile",
+                        style: TextStyle(fontSize: 25, color: Colors.white)),
+                    onPressed: () {
+                      Navigator.push(context,
+                          CupertinoPageRoute(builder: (_) => Profile()));
+                    })
               ],
             ),
             Row(
@@ -72,8 +78,13 @@ class _Main_DishesState extends State<Main_Dishes> {
                     width: 50,
                     height: 50,
                     child: Image.asset("assets/medal.png")),
-                Text("Loyalty Points",
-                    style: TextStyle(fontSize: 23, color: Colors.white))
+                TextButton(
+                    child: Text("Loyalty Points",
+                        style: TextStyle(fontSize: 25, color: Colors.white)),
+                    onPressed: () {
+                      Navigator.push(context,
+                          CupertinoPageRoute(builder: (_) => Loyalty_Points()));
+                    })
               ],
             ),
             Row(

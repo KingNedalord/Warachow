@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:warachow/best_sellers.dart';
+import 'package:warachow/loyalty_points.dart';
+import 'package:warachow/profile.dart';
 
 import 'information.dart';
 import 'main_dishes.dart';
@@ -15,6 +17,7 @@ class Main_Page extends StatefulWidget {
 
 class _Main_PageState extends State<Main_Page> {
   late Box<Information> box;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -40,7 +43,10 @@ class _Main_PageState extends State<Main_Page> {
               children: [
                 SizedBox(width: MediaQuery.of(context).size.width * 0.05),
                 Text(box.getAt(0)!.name,
-                    style: TextStyle(fontSize: 25, color: Colors.white,fontWeight: FontWeight.w500))
+                    style: TextStyle(
+                        fontSize: 25,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w500))
               ],
             ),
             Row(
@@ -49,8 +55,13 @@ class _Main_PageState extends State<Main_Page> {
                     width: 50,
                     height: 50,
                     child: Image.asset("assets/profile.png")),
-                Text("Profile",
-                    style: TextStyle(fontSize: 25, color: Colors.white))
+                TextButton(
+                    child: Text("Profile",
+                        style: TextStyle(fontSize: 25, color: Colors.white)),
+                    onPressed: () {
+                      Navigator.push(context,
+                          CupertinoPageRoute(builder: (_) => Profile()));
+                    })
               ],
             ),
             Row(
@@ -60,7 +71,7 @@ class _Main_PageState extends State<Main_Page> {
                     height: 50,
                     child: Image.asset("assets/heart.png")),
                 Text("Wishlist",
-                    style: TextStyle(fontSize: 25, color: Colors.white))
+                    style: TextStyle(fontSize: 25, color: Colors.white)),
               ],
             ),
             Row(
@@ -69,8 +80,13 @@ class _Main_PageState extends State<Main_Page> {
                     width: 50,
                     height: 50,
                     child: Image.asset("assets/medal.png")),
-                Text("Loyalty Points",
-                    style: TextStyle(fontSize: 25, color: Colors.white))
+                TextButton(
+                    child: Text("Loyalty Points",
+                        style: TextStyle(fontSize: 25, color: Colors.white)),
+                    onPressed: () {
+                      Navigator.push(context,
+                          CupertinoPageRoute(builder: (_) => Loyalty_Points()));
+                    })
               ],
             ),
             Row(
@@ -107,8 +123,9 @@ class _Main_PageState extends State<Main_Page> {
                     height: MediaQuery.of(context).size.height * 0.02,
                   ),
                   Text(
-                      "Homemade meals prepared with\n     "
+                      "Homemade meals prepared with\n"
                       "love.  Richest  ingredients",
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                           color: Colors.white,
                           fontFamily: "EBG",
