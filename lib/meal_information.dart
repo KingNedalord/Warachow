@@ -41,12 +41,12 @@ class _Meal_informationState extends State<Meal_information> {
             },
             child: Container(
                 width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height * 0.5,
+                height: MediaQuery.of(context).size.height * 0.4,
                 child: Stack(
                   children: [
                     Container(
                       width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height * 0.5,
+                      height: MediaQuery.of(context).size.height * 0.4,
                       color: Colors.teal,
                     ),
                     Positioned(

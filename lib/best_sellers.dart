@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:warachow/meal_information2.dart';
 import 'package:warachow/profile.dart';
 
 import 'information.dart';
@@ -184,13 +185,22 @@ class _Best_SellersState extends State<Best_Sellers> {
                       children: [
                         Column(
                           children: [
-                            Text(meals[index].meal_label,
+                            Text(
+                              meals[index].meal_label,
                               style: TextStyle(fontSize: 20),
                             ),
                             Container(
                                 width: 90,
                                 height: 40,
-                                child: Image.asset("assets/buy_now.png"))
+                                child: MaterialButton(
+                                    onPressed: () {
+                                      Navigator.push(
+                                          context,
+                                          CupertinoPageRoute(
+                                              builder: (_) => Meal_Information2(
+                                                  meal_index2: index)));
+                                    },
+                                    child: Image.asset("assets/buy_now.png")))
                           ],
                         )
                       ],
