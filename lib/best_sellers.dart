@@ -1,12 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:warachow/meal_information2.dart';
 import 'package:warachow/profile.dart';
+import 'package:warachow/shopping_cart.dart';
 
 import 'adapters/information.dart';
-import 'loyalty_points.dart';
 import 'adapters/meals_list.dart';
+import 'mainPage.dart';
+import 'meal_information2.dart';
 
 class Best_Sellers extends StatefulWidget {
   const Best_Sellers({super.key});
@@ -28,8 +29,8 @@ class _Best_SellersState extends State<Best_Sellers> {
   List<Meals_list> meals = [
     Meals_list(meal_label: "Beef Burger", price: 5, image: "assets/21.png"),
     Meals_list(meal_label: "Shawarma", price: 6, image: "assets/22.png"),
-    Meals_list(meal_label: "Pizza Peperoni", price: 8, image: "assets/24.png"),
-    Meals_list(meal_label: "Cheesy Bread", price: 3, image: "assets/14.png"),
+    Meals_list(meal_label: "Cheesy Bread", price: 8, image: "assets/24.png"),
+    Meals_list(meal_label: "Pizza Peperoni", price: 3, image: "assets/14.png"),
     Meals_list(meal_label: "Amala", price: 10, image: "assets/15.png"),
     Meals_list(meal_label: "Jollof Spaghetti", price: 5, image: "assets/26.png")
   ];
@@ -42,75 +43,7 @@ class _Best_SellersState extends State<Best_Sellers> {
         actions: [Icon(Icons.shopping_cart), SizedBox(width: 10)],
         elevation: 0,
       ),
-      drawer: Drawer(
-        backgroundColor: Color(0xFFFF785B),
-        elevation: 20,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Row(
-              children: [
-                SizedBox(width: MediaQuery.of(context).size.width * 0.05),
-                Text(box.getAt(0)!.name,
-                    style: TextStyle(
-                        fontSize: 25,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w500))
-              ],
-            ),
-            Row(
-              children: [
-                Container(
-                    width: 50,
-                    height: 50,
-                    child: Image.asset("assets/profile.png")),
-                TextButton(
-                    child: Text("Profile",
-                        style: TextStyle(fontSize: 25, color: Colors.white)),
-                    onPressed: () {
-                      Navigator.push(context,
-                          CupertinoPageRoute(builder: (_) => Profile()));
-                    })
-              ],
-            ),
-            Row(
-              children: [
-                Container(
-                    width: 50,
-                    height: 50,
-                    child: Image.asset("assets/heart.png")),
-                Text("Wishlist",
-                    style: TextStyle(fontSize: 25, color: Colors.white))
-              ],
-            ),
-            Row(
-              children: [
-                Container(
-                    width: 50,
-                    height: 50,
-                    child: Image.asset("assets/medal.png")),
-                TextButton(
-                    child: Text("Loyalty Points",
-                        style: TextStyle(fontSize: 25, color: Colors.white)),
-                    onPressed: () {
-                      Navigator.push(context,
-                          CupertinoPageRoute(builder: (_) => Loyalty_Points()));
-                    })
-              ],
-            ),
-            Row(
-              children: [
-                Container(
-                    width: 50,
-                    height: 50,
-                    child: Image.asset("assets/cart.png")),
-                Text("Payment Methods",
-                    style: TextStyle(fontSize: 25, color: Colors.white))
-              ],
-            ),
-          ],
-        ),
-      ),
+      drawer: NavigationDrawer1(box: box),
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
@@ -214,11 +147,11 @@ class _Best_SellersState extends State<Best_Sellers> {
       ),
       bottomNavigationBar: Container(
         width: MediaQuery.of(context).size.width,
-        height: 70,
+        height:  MediaQuery.of(context).size.height * 0.09,
         child: Column(
           children: [
             Divider(
-                thickness: 0.3,
+                thickness: 0.4,
                 color: Colors.grey[400],
                 indent: 15,
                 endIndent: 15),
@@ -240,8 +173,13 @@ class _Best_SellersState extends State<Best_Sellers> {
                   },
                 ),
                 SizedBox(width: MediaQuery.of(context).size.width * 0.1),
-                Icon(Icons.shopping_cart, color: Colors.grey),
-                SizedBox(width: MediaQuery.of(context).size.width * 0.23),
+                IconButton(
+                  icon: Icon(Icons.shopping_cart, color: Colors.grey),
+                  onPressed: () {
+                    Navigator.push(context,CupertinoPageRoute(builder: (_)=> Shopping_Cart()));
+                  },
+                ),
+
               ],
             ),
           ],

@@ -18,6 +18,7 @@ class _ProfileState extends State<Profile> {
   TextEditingController addresscontr = TextEditingController();
   late Box<Information> box;
 
+
   @override
   void initState() {
     // TODO: implement initState
@@ -65,7 +66,7 @@ class _ProfileState extends State<Profile> {
           ),
           Container(
             width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height * 0.35,
+            height: MediaQuery.of(context).size.height * 0.33,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
@@ -81,7 +82,7 @@ class _ProfileState extends State<Profile> {
           ),
           Container(
             width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height * 0.4,
+            height: MediaQuery.of(context).size.height * 0.37,
             child: Column(
               children: [
                 SizedBox(height: MediaQuery.of(context).size.height * 0.05),
@@ -107,74 +108,11 @@ class _ProfileState extends State<Profile> {
                           ],
                         )),
                     SizedBox(width: MediaQuery.of(context).size.width * 0.02),
-                    IconButton(
-                        onPressed: () {
-                          showDialog(
-                              context: context,
-                              builder: (context) {
-                                return AlertDialog(
-                                  title: Text("Edit window"),
-                                  content: Container(
-                                    width: 300,
-                                    height: 180,
-                                    child: Column(
-                                      children: [
-                                        TextField(
-                                          controller: emailcontr,
-                                          decoration: InputDecoration(
-                                            border: OutlineInputBorder(),
-                                            hintText: "Enter email",
-                                          ),
-                                        ),
-                                        TextField(
-                                          controller: datecontr,
-                                          decoration: InputDecoration(
-                                            border: OutlineInputBorder(),
-                                            hintText: "Enter birth date",
-                                          ),
-                                        ),
-                                        TextField(
-                                          controller: addresscontr,
-                                          decoration: InputDecoration(
-                                            border: OutlineInputBorder(),
-                                            hintText: "Enter Address",
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  actions: [
-                                    TextButton(
-                                        onPressed: () {
-                                          Navigator.pop(context);
-                                        },
-                                        child: Text("Cancel")),
-                                    TextButton(
-                                        onPressed: () {
-                                          setState(() {
-                                            if (emailcontr.value.text != "" &&
-                                                datecontr.value.text != "" &&
-                                                addresscontr.value.text != "") {
-                                              Information info = Information(
-                                                  name: box.getAt(0)!.name,
-                                                  password:
-                                                      box.getAt(0)!.password,
-                                                  email: emailcontr.value.text,
-                                                  date_of_birth:
-                                                      datecontr.value.text,
-                                                  address:
-                                                      addresscontr.value.text);
-                                              box.putAt(0, info);
-                                              Navigator.pop(context);
-                                            }
-                                          });
-                                        },
-                                        child: Text("Save")),
-                                  ],
-                                );
-                              });
-                        },
-                        icon: Icon(Icons.edit_note_outlined)),
+                    Icon(
+                        box.getAt(0)!.email != ""
+                            ? CupertinoIcons.check_mark_circled
+                            : Icons.close,
+                        color:  box.getAt(0)!.email != "" ? Colors.green : Colors.red),
                   ],
                 ),
                 SizedBox(
@@ -202,74 +140,11 @@ class _ProfileState extends State<Profile> {
                           ],
                         )),
                     SizedBox(width: MediaQuery.of(context).size.width * 0.02),
-                    IconButton(
-                        onPressed: () {
-                          showDialog(
-                              context: context,
-                              builder: (context) {
-                                return AlertDialog(
-                                  title: Text("Edit window"),
-                                  content: Container(
-                                    width: 300,
-                                    height: 180,
-                                    child: Column(
-                                      children: [
-                                        TextField(
-                                          controller: emailcontr,
-                                          decoration: InputDecoration(
-                                            border: OutlineInputBorder(),
-                                            hintText: "Enter email",
-                                          ),
-                                        ),
-                                        TextField(
-                                          controller: datecontr,
-                                          decoration: InputDecoration(
-                                            border: OutlineInputBorder(),
-                                            hintText: "Enter birth date",
-                                          ),
-                                        ),
-                                        TextField(
-                                          controller: addresscontr,
-                                          decoration: InputDecoration(
-                                            border: OutlineInputBorder(),
-                                            hintText: "Enter Address",
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  actions: [
-                                    TextButton(
-                                        onPressed: () {
-                                          Navigator.pop(context);
-                                        },
-                                        child: Text("Cancel")),
-                                    TextButton(
-                                        onPressed: () {
-                                          setState(() {
-                                            if (emailcontr.value.text != "" &&
-                                                datecontr.value.text != "" &&
-                                                addresscontr.value.text != "") {
-                                              Information info = Information(
-                                                  name: box.getAt(0)!.name,
-                                                  password:
-                                                      box.getAt(0)!.password,
-                                                  email: emailcontr.value.text,
-                                                  date_of_birth:
-                                                      datecontr.value.text,
-                                                  address:
-                                                      addresscontr.value.text);
-                                              box.putAt(0, info);
-                                              Navigator.pop(context);
-                                            }
-                                          });
-                                        },
-                                        child: Text("Save")),
-                                  ],
-                                );
-                              });
-                        },
-                        icon: Icon(Icons.edit_note_outlined)),
+                    Icon(
+                        box.getAt(0)!.date_of_birth != ""
+                            ? CupertinoIcons.check_mark_circled
+                            : Icons.close,
+                        color: box.getAt(0)!.date_of_birth != "" ? Colors.green : Colors.red),
                   ],
                 ),
                 SizedBox(
@@ -285,7 +160,7 @@ class _ProfileState extends State<Profile> {
                             color: Colors.white,
                             border: Border.all(color: Colors.grey, width: 1)),
                         width: MediaQuery.of(context).size.width * 0.75,
-                        height: MediaQuery.of(context).size.height * 0.15,
+                        height: MediaQuery.of(context).size.height * 0.12,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -297,84 +172,107 @@ class _ProfileState extends State<Profile> {
                           ],
                         )),
                     SizedBox(width: MediaQuery.of(context).size.width * 0.02),
-                    IconButton(
-                        onPressed: () {
-                          showDialog(
-                              context: context,
-                              builder: (context) {
-                                return AlertDialog(
-                                  title: Text("Edit window"),
-                                  content: Container(
-                                    width: 300,
-                                    height: 180,
-                                    child: Column(
-                                      children: [
-                                        TextField(
-                                          controller: emailcontr,
-                                          decoration: InputDecoration(
-                                            border: OutlineInputBorder(),
-                                            hintText: "Enter email",
-                                          ),
-                                        ),
-                                        TextField(
-                                          controller: datecontr,
-                                          decoration: InputDecoration(
-                                            border: OutlineInputBorder(),
-                                            hintText: "Enter birth date",
-                                          ),
-                                        ),
-                                        TextField(
-                                          controller: addresscontr,
-                                          decoration: InputDecoration(
-                                            border: OutlineInputBorder(),
-                                            hintText: "Enter Address",
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  actions: [
-                                    TextButton(
-                                        onPressed: () {
-                                          Navigator.pop(context);
-                                        },
-                                        child: Text("Cancel")),
-                                    TextButton(
-                                        onPressed: () {
-                                          setState(() {
-                                            if (emailcontr.value.text != "" &&
-                                                datecontr.value.text != "" &&
-                                                addresscontr.value.text != "") {
-                                              Information info = Information(
-                                                  name: box.getAt(0)!.name,
-                                                  password:
-                                                      box.getAt(0)!.password,
-                                                  email: emailcontr.value.text,
-                                                  date_of_birth:
-                                                      datecontr.value.text,
-                                                  address:
-                                                      addresscontr.value.text);
-                                              box.putAt(0, info);
-                                              Navigator.pop(context);
-                                            }
-                                          });
-                                        },
-                                        child: Text("Save")),
-                                  ],
-                                );
-                              });
-                        },
-                        icon: Icon(Icons.edit_note_outlined)),
+                    Icon(
+                        box.getAt(0)!.address != ""
+                            ? CupertinoIcons.check_mark_circled
+                            : Icons.close,
+                        color: box.getAt(0)!.address != "" ?Colors.green : Colors.red),
                   ],
                 ),
               ],
             ),
+          ),
+          Container(
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(color: Colors.grey[600]!)),
+            child: MaterialButton(
+                onPressed: () {
+                  emailcontr.text = box.getAt(0)!.email;
+                  datecontr.text = box.getAt(0)!.date_of_birth;
+                  addresscontr.text = box.getAt(0)!.address;
+                  showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          title: Text("Edit window"),
+                          content: Container(
+                            width: MediaQuery.of(context).size.width * 0.4,
+                            height: MediaQuery.of(context).size.height * 0.32,
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: TextField(
+                                    controller: emailcontr,
+                                    decoration: InputDecoration(
+                                      border: OutlineInputBorder(),
+                                      hintText: "Enter email",
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: TextField(
+                                    controller: datecontr,
+                                    decoration: InputDecoration(
+                                      border: OutlineInputBorder(),
+                                      hintText: "Enter birth date",
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: TextField(
+                                    controller: addresscontr,
+                                    decoration: InputDecoration(
+                                      border: OutlineInputBorder(),
+                                      hintText: "Enter Address",
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          actions: [
+                            TextButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                child: Text("Cancel")),
+                            TextButton(
+                                onPressed: () {
+                                  setState(() {
+                                    if (emailcontr.value.text != "" &&
+                                        datecontr.value.text != "" &&
+                                        addresscontr.value.text != "") {
+                                      Information info = Information(
+                                          name: box.getAt(0)!.name,
+                                          password: box.getAt(0)!.password,
+                                          email: emailcontr.value.text,
+                                          date_of_birth: datecontr.value.text,
+                                          address: addresscontr.value.text);
+                                      box.putAt(0, info);
+                                      Navigator.pop(context);
+                                    }
+                                  });
+                                },
+                                child: Text("Save")),
+                          ],
+                        );
+                      });
+                },
+                child: Text(
+                  "Edit Profile",
+                  style: TextStyle(fontSize: 20, color: Colors.black),
+                  textAlign: TextAlign.center,
+                )),
           )
         ],
       ),
       bottomNavigationBar: Container(
         width: MediaQuery.of(context).size.width,
-        height: 70,
+        height: 60,
         child: Column(
           children: [
             Divider(

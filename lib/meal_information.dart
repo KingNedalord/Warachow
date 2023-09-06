@@ -50,16 +50,12 @@ class _Meal_informationState extends State<Meal_information> {
             child: Container(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height * 0.4,
+                color: Colors.teal,
                 child: Stack(
                   children: [
-                    Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height * 0.4,
-                      color: Colors.teal,
-                    ),
                     Positioned(
-                      right: 2,
-                      top: 5,
+                      left: 2,
+                      bottom: 5,
                       child: Container(
                         padding: EdgeInsets.all(6),
                         decoration: BoxDecoration(
@@ -78,6 +74,7 @@ class _Meal_informationState extends State<Meal_information> {
                         Container(
                             width: MediaQuery.of(context).size.width,
                             height: MediaQuery.of(context).size.height * 0.3,
+                            color: Colors.pink,
                             child: Image.asset(meals[widget.meal_index].image)),
                       ],
                     ),
@@ -104,12 +101,12 @@ class _Meal_informationState extends State<Meal_information> {
                 )),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 10, right: 8),
+            padding: const EdgeInsets.only(left: 8, right: 8),
             child: Container(
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * 0.45,
+              height: MediaQuery.of(context).size.height * 0.6,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,

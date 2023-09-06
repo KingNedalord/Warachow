@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:warachow/shopping_cart.dart';
 import 'package:warachow/welcome.dart';
 import 'adapters/information.dart';
 import 'adapters/meals_list.dart';
@@ -24,7 +25,7 @@ void main() async {
   Hive.registerAdapter<Meals_list>(MealslistAdapter());
   meals_box = await Hive.openBox<Meals_list>("meal");
   runApp(MaterialApp(
-    home:
+    home: 
     text == true ? Main_Page() : Welcome(),
     debugShowCheckedModeBanner: false,
   ));

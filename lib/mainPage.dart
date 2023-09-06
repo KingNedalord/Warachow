@@ -33,79 +33,11 @@ class _Main_PageState extends State<Main_Page> {
         actions: [Icon(Icons.shopping_cart), SizedBox(width: 10)],
         elevation: 0,
       ),
-      drawer: Drawer(
-        backgroundColor: Color(0xFFFF785B),
-        elevation: 20,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Row(
-              children: [
-                SizedBox(width: MediaQuery.of(context).size.width * 0.05),
-                Text(box.getAt(0)!.name,
-                    style: TextStyle(
-                        fontSize: 25,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w500))
-              ],
-            ),
-            Row(
-              children: [
-                Container(
-                    width: 50,
-                    height: 50,
-                    child: Image.asset("assets/profile.png")),
-                TextButton(
-                    child: Text("Profile",
-                        style: TextStyle(fontSize: 25, color: Colors.white)),
-                    onPressed: () {
-                      Navigator.push(context,
-                          CupertinoPageRoute(builder: (_) => Profile()));
-                    })
-              ],
-            ),
-            Row(
-              children: [
-                Container(
-                    width: 50,
-                    height: 50,
-                    child: Image.asset("assets/heart.png")),
-                Text("Wishlist",
-                    style: TextStyle(fontSize: 25, color: Colors.white)),
-              ],
-            ),
-            Row(
-              children: [
-                Container(
-                    width: 50,
-                    height: 50,
-                    child: Image.asset("assets/medal.png")),
-                TextButton(
-                    child: Text("Loyalty Points",
-                        style: TextStyle(fontSize: 25, color: Colors.white)),
-                    onPressed: () {
-                      Navigator.push(context,
-                          CupertinoPageRoute(builder: (_) => Loyalty_Points()));
-                    })
-              ],
-            ),
-            Row(
-              children: [
-                Container(
-                    width: 50,
-                    height: 50,
-                    child: Image.asset("assets/cart.png")),
-                Text("Payment Methods",
-                    style: TextStyle(fontSize: 25, color: Colors.white))
-              ],
-            ),
-          ],
-        ),
-      ),
+      drawer: NavigationDrawer1(box: box),
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-              toolbarHeight: MediaQuery.of(context).size.height * 0.25,
+              toolbarHeight: MediaQuery.of(context).size.height * 0.28,
               backgroundColor: Color(0xFFFF785B),
               leading: Text(""),
               pinned: true,
@@ -189,6 +121,85 @@ class _Main_PageState extends State<Main_Page> {
               ],
             );
           }, childCount: 2))
+        ],
+      ),
+    );
+  }
+}
+
+class NavigationDrawer1 extends StatelessWidget {
+  final box;
+
+  NavigationDrawer1({Key? key, required this.box}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      backgroundColor: Color(0xFFFF785B),
+      elevation: 20,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Row(
+            children: [
+              SizedBox(width: MediaQuery.of(context).size.width * 0.05),
+              Text(box.getAt(0)!.name,
+                  style: TextStyle(
+                      fontSize: 25,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w500))
+            ],
+          ),
+          Row(
+            children: [
+              Container(
+                  width: 50,
+                  height: 50,
+                  child: Image.asset("assets/profile.png")),
+              TextButton(
+                  child: Text("Profile",
+                      style: TextStyle(fontSize: 25, color: Colors.white)),
+                  onPressed: () {
+                    Navigator.push(context,
+                        CupertinoPageRoute(builder: (_) => Profile()));
+                  })
+            ],
+          ),
+          Row(
+            children: [
+              Container(
+                  width: 50,
+                  height: 50,
+                  child: Image.asset("assets/heart.png")),
+              Text("Wishlist",
+                  style: TextStyle(fontSize: 25, color: Colors.white))
+            ],
+          ),
+          Row(
+            children: [
+              Container(
+                  width: 50,
+                  height: 50,
+                  child: Image.asset("assets/medal.png")),
+              TextButton(
+                  child: Text("Loyalty Points",
+                      style: TextStyle(fontSize: 25, color: Colors.white)),
+                  onPressed: () {
+                    Navigator.push(context,
+                        CupertinoPageRoute(builder: (_) => Loyalty_Points()));
+                  })
+            ],
+          ),
+          Row(
+            children: [
+              Container(
+                  width: 50,
+                  height: 50,
+                  child: Image.asset("assets/cart.png")),
+              Text("Payment Methods",
+                  style: TextStyle(fontSize: 25, color: Colors.white))
+            ],
+          ),
         ],
       ),
     );
