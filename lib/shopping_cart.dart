@@ -23,6 +23,9 @@ class _Shopping_CartState extends State<Shopping_Cart> {
     meals_box = Hive.box("meal");
   }
 
+  int amount_of_meal = 1;
+  int end_price = 1;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,13 +82,52 @@ class _Shopping_CartState extends State<Shopping_Cart> {
                       child: ListView.separated(
                           itemBuilder: (context, index) {
                             return Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
+                                Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.3,
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.33,
+                                  color: Colors.pink,
+                                ),
                                 Column(
                                   children: [
                                     Text(meals_box.getAt(index)!.meal_label),
-
+                                    Row(
+                                      children: [
+                                        IconButton(
+                                            icon: Icon(CupertinoIcons.minus,
+                                                size: 15),
+                                            onPressed: () {
+                                              setState(() {
+                                                if (amount_of_meal > 1) {
+                                                  amount_of_meal -= 1;
+                                                  end_price = meals_box.getAt(index)!.price * amount_of_meal;
+                                                }
+                                              });
+                                            }),
+                                        Container(
+                                            width: 20,
+                                            height: 20,
+                                            color: Colors.grey,
+                                            child: Text("${amount_of_meal}",
+                                                style: TextStyle(fontSize: 17),
+                                                textAlign: TextAlign.center)),
+                                        IconButton(
+                                            icon: Icon(CupertinoIcons.plus,
+                                                size: 15),
+                                            onPressed: () {
+                                              setState(() {
+                                                amount_of_meal += 1;
+                                                end_price = meals_box.getAt(index)!.price * amount_of_meal;
+                                              });
+                                            }),
+                                      ],
+                                    )
                                   ],
-                                )
+                                ),
+                                
                               ],
                             );
                           },

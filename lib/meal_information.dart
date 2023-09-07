@@ -163,6 +163,7 @@ class _Meal_informationState extends State<Meal_information> {
                             price: meals[widget.meal_index].price,
                             image: meals[widget.meal_index].image);
                         meals_box.add(meals_list);
+                        Navigator.pop(context);
                       },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,

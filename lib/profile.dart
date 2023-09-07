@@ -18,7 +18,6 @@ class _ProfileState extends State<Profile> {
   TextEditingController addresscontr = TextEditingController();
   late Box<Information> box;
 
-
   @override
   void initState() {
     // TODO: implement initState
@@ -109,10 +108,14 @@ class _ProfileState extends State<Profile> {
                         )),
                     SizedBox(width: MediaQuery.of(context).size.width * 0.02),
                     Icon(
-                        box.getAt(0)!.email != ""
+                        box.getAt(0)!.email != "example@gmail.com" &&
+                                box.getAt(0)!.email != ""
                             ? CupertinoIcons.check_mark_circled
                             : Icons.close,
-                        color:  box.getAt(0)!.email != "" ? Colors.green : Colors.red),
+                        color: box.getAt(0)!.email != "example@gmail.com" &&
+                                box.getAt(0)!.email != ""
+                            ? Colors.green
+                            : Colors.red),
                   ],
                 ),
                 SizedBox(
@@ -141,10 +144,14 @@ class _ProfileState extends State<Profile> {
                         )),
                     SizedBox(width: MediaQuery.of(context).size.width * 0.02),
                     Icon(
-                        box.getAt(0)!.date_of_birth != ""
+                        box.getAt(0)!.date_of_birth != "00-00-0000" &&
+                                box.getAt(0)!.date_of_birth != ""
                             ? CupertinoIcons.check_mark_circled
                             : Icons.close,
-                        color: box.getAt(0)!.date_of_birth != "" ? Colors.green : Colors.red),
+                        color: box.getAt(0)!.date_of_birth != "00-00-0000" &&
+                                box.getAt(0)!.date_of_birth != ""
+                            ? Colors.green
+                            : Colors.red),
                   ],
                 ),
                 SizedBox(
@@ -173,10 +180,14 @@ class _ProfileState extends State<Profile> {
                         )),
                     SizedBox(width: MediaQuery.of(context).size.width * 0.02),
                     Icon(
-                        box.getAt(0)!.address != ""
+                        box.getAt(0)!.address != "-" &&
+                                box.getAt(0)!.address != ""
                             ? CupertinoIcons.check_mark_circled
                             : Icons.close,
-                        color: box.getAt(0)!.address != "" ?Colors.green : Colors.red),
+                        color: box.getAt(0)!.address != "-" &&
+                                box.getAt(0)!.address != ""
+                            ? Colors.green
+                            : Colors.red),
                   ],
                 ),
               ],
