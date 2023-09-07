@@ -23,9 +23,6 @@ class _Shopping_CartState extends State<Shopping_Cart> {
     meals_box = Hive.box("meal");
   }
 
-  int amount_of_meal = 1;
-  int end_price = 1;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -88,7 +85,7 @@ class _Shopping_CartState extends State<Shopping_Cart> {
                                   width:
                                       MediaQuery.of(context).size.width * 0.3,
                                   height:
-                                      MediaQuery.of(context).size.height * 0.33,
+                                      MediaQuery.of(context).size.height * 0.2,
                                   color: Colors.pink,
                                 ),
                                 Column(
@@ -101,9 +98,9 @@ class _Shopping_CartState extends State<Shopping_Cart> {
                                                 size: 15),
                                             onPressed: () {
                                               setState(() {
-                                                if (amount_of_meal > 1) {
-                                                  amount_of_meal -= 1;
-                                                  end_price = meals_box.getAt(index)!.price * amount_of_meal;
+                                                if (meals_box.getAt(index)!.amount > 1) {
+                                                  meals_box.putAt(index, Meals_list(meal_label: meals_box.getAt(index)!.meal_label, price: meals_box.getAt(index)!.price, image: meals_box.getAt(index)!.image, amount: meals_box.getAt(index)!.amount - 1));
+
                                                 }
                                               });
                                             }),
@@ -111,7 +108,8 @@ class _Shopping_CartState extends State<Shopping_Cart> {
                                             width: 20,
                                             height: 20,
                                             color: Colors.grey,
-                                            child: Text("${amount_of_meal}",
+                                            child: Text(
+                                                "${meals_box.getAt(index)!.amount}",
                                                 style: TextStyle(fontSize: 17),
                                                 textAlign: TextAlign.center)),
                                         IconButton(
@@ -119,15 +117,22 @@ class _Shopping_CartState extends State<Shopping_Cart> {
                                                 size: 15),
                                             onPressed: () {
                                               setState(() {
-                                                amount_of_meal += 1;
-                                                end_price = meals_box.getAt(index)!.price * amount_of_meal;
+                                                meals_box.putAt(
+                                                    index,
+                                                    Meals_list(meal_label: meals_box.getAt(index)!.meal_label, price: meals_box.getAt(index)!.price, image: meals_box.getAt(index)!.image, amount: meals_box.getAt(index)!.amount + 1));
                                               });
                                             }),
                                       ],
                                     )
                                   ],
                                 ),
-                                
+                                Row(children: [
+                                  Text(
+                                      "💶${meals_box.getAt(index)!.price * meals_box.getAt(index)!.amount}",
+                                      style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w500))
+                                ])
                               ],
                             );
                           },

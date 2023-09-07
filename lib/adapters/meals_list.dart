@@ -9,6 +9,8 @@ class Meals_list{
   int price;
   @HiveField(2)
   String image;
+  @HiveField(3)
+  int amount;
 
-  Meals_list({required this.meal_label,required this.price,required this.image});
+  Meals_list({required this.meal_label,required this.price,required this.image,required this.amount});
 }

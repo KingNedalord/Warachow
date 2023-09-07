@@ -17,12 +17,12 @@ class _Meal_informationState extends State<Meal_information> {
   bool isLiked = false;
 
   List<Meals_list> meals = [
-    Meals_list(meal_label: "Fried Rice", price: 5, image: "assets/11.png"),
-    Meals_list(meal_label: "Jollof Rice", price: 6, image: "assets/12.png"),
-    Meals_list(meal_label: "Pasta Rigatoni", price: 4, image: "assets/13.png"),
-    Meals_list(meal_label: "Pizza Peperoni", price: 8, image: "assets/14.png"),
-    Meals_list(meal_label: "Amala", price: 10, image: "assets/15.png"),
-    Meals_list(meal_label: "Butterfly Pasta", price: 8, image: "assets/16.png")
+    Meals_list(meal_label: "Fried Rice", price: 5, image: "assets/11.png",amount: 1),
+    Meals_list(meal_label: "Jollof Rice", price: 6, image: "assets/12.png",amount: 1),
+    Meals_list(meal_label: "Pasta Rigatoni", price: 4, image: "assets/13.png",amount: 1),
+    Meals_list(meal_label: "Pizza Peperoni", price: 8, image: "assets/14.png",amount: 1),
+    Meals_list(meal_label: "Amala", price: 10, image: "assets/15.png",amount: 1),
+    Meals_list(meal_label: "Butterfly Pasta", price: 8, image: "assets/16.png",amount: 1)
   ];
 
   late Box<Meals_list> meals_box;
@@ -161,7 +161,9 @@ class _Meal_informationState extends State<Meal_information> {
                         Meals_list meals_list = Meals_list(
                             meal_label: meals[widget.meal_index].meal_label,
                             price: meals[widget.meal_index].price,
-                            image: meals[widget.meal_index].image);
+                            image: meals[widget.meal_index].image,
+                          amount: meals[widget.meal_index].amount
+                        );
                         meals_box.add(meals_list);
                         Navigator.pop(context);
                       },

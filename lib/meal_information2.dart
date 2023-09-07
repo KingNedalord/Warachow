@@ -16,15 +16,31 @@ class Meal_Information2 extends StatefulWidget {
 class _Meal_Information2State extends State<Meal_Information2> {
   bool isLiked2 = false;
   List<Meals_list> meals = [
-    Meals_list(meal_label: "Beef Burger", price: 5, image: "assets/21.png"),
-    Meals_list(meal_label: "Shawarma", price: 6, image: "assets/22.png"),
-    Meals_list(meal_label: "Cheesy Bread", price: 8, image: "assets/24.png"),
-    Meals_list(meal_label: "Pizza Peperoni", price: 3, image: "assets/14.png"),
-    Meals_list(meal_label: "Amala", price: 10, image: "assets/15.png"),
-    Meals_list(meal_label: "Jollof Spaghetti", price: 5, image: "assets/26.png")
+    Meals_list(
+        meal_label: "Beef Burger", price: 5, image: "assets/21.png", amount: 1),
+    Meals_list(
+        meal_label: "Shawarma", price: 6, image: "assets/22.png", amount: 1),
+    Meals_list(
+        meal_label: "Cheesy Bread",
+        price: 8,
+        image: "assets/24.png",
+        amount: 1),
+    Meals_list(
+        meal_label: "Pizza Peperoni",
+        price: 3,
+        image: "assets/14.png",
+        amount: 1),
+    Meals_list(
+        meal_label: "Amala", price: 10, image: "assets/15.png", amount: 1),
+    Meals_list(
+        meal_label: "Jollof Spaghetti",
+        price: 5,
+        image: "assets/26.png",
+        amount: 1)
   ];
 
   late Box<Meals_list> meals_box;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -161,7 +177,8 @@ class _Meal_Information2State extends State<Meal_Information2> {
                         Meals_list meals_list = Meals_list(
                             meal_label: meals[widget.meal_index2].meal_label,
                             price: meals[widget.meal_index2].price,
-                            image: meals[widget.meal_index2].image);
+                            image: meals[widget.meal_index2].image,
+                            amount: meals[widget.meal_index2].amount);
                         meals_box.add(meals_list);
                         Navigator.pop(context);
                       },

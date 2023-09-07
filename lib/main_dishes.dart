@@ -27,12 +27,12 @@ class _Main_DishesState extends State<Main_Dishes> {
   }
 
   List<Meals_list> meals = [
-    Meals_list(meal_label: "Fried Rice", price: 5, image: "assets/11.png"),
-    Meals_list(meal_label: "Jollof Rice", price: 6, image: "assets/12.png"),
-    Meals_list(meal_label: "Pasta Rigatoni", price: 4, image: "assets/13.png"),
-    Meals_list(meal_label: "Pizza Peperoni", price: 8, image: "assets/14.png"),
-    Meals_list(meal_label: "Amala", price: 10, image: "assets/15.png"),
-    Meals_list(meal_label: "Butterfly Pasta", price: 8, image: "assets/16.png")
+    Meals_list(meal_label: "Fried Rice", price: 5, image: "assets/11.png",amount: 1),
+    Meals_list(meal_label: "Jollof Rice", price: 6, image: "assets/12.png",amount: 1),
+    Meals_list(meal_label: "Pasta Rigatoni", price: 4, image: "assets/13.png",amount: 1),
+    Meals_list(meal_label: "Pizza Peperoni", price: 8, image: "assets/14.png",amount: 1),
+    Meals_list(meal_label: "Amala", price: 10, image: "assets/15.png",amount: 1),
+    Meals_list(meal_label: "Butterfly Pasta", price: 8, image: "assets/16.png",amount: 1)
   ];
 
   @override
