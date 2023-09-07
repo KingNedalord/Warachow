@@ -85,8 +85,19 @@ class _Shopping_CartState extends State<Shopping_Cart> {
                                   width:
                                       MediaQuery.of(context).size.width * 0.3,
                                   height:
-                                      MediaQuery.of(context).size.height * 0.2,
-                                  color: Colors.pink,
+                                      MediaQuery.of(context).size.height * 0.15,
+                                  child: Stack(
+                                    children: [
+                                      Image.asset(
+                                          "assets/background_shoppingcart.png"),
+                                      ClipOval(
+                                        child: SizedBox.fromSize(
+                                            size: Size.fromRadius(20),
+                                            child: Image.asset(
+                                                meals_box.getAt(index)!.image)),
+                                      )
+                                    ],
+                                  ),
                                 ),
                                 Column(
                                   children: [
@@ -98,9 +109,26 @@ class _Shopping_CartState extends State<Shopping_Cart> {
                                                 size: 15),
                                             onPressed: () {
                                               setState(() {
-                                                if (meals_box.getAt(index)!.amount > 1) {
-                                                  meals_box.putAt(index, Meals_list(meal_label: meals_box.getAt(index)!.meal_label, price: meals_box.getAt(index)!.price, image: meals_box.getAt(index)!.image, amount: meals_box.getAt(index)!.amount - 1));
-
+                                                if (meals_box
+                                                        .getAt(index)!
+                                                        .amount >
+                                                    1) {
+                                                  meals_box.putAt(
+                                                      index,
+                                                      Meals_list(
+                                                          meal_label: meals_box
+                                                              .getAt(index)!
+                                                              .meal_label,
+                                                          price: meals_box
+                                                              .getAt(index)!
+                                                              .price,
+                                                          image: meals_box
+                                                              .getAt(index)!
+                                                              .image,
+                                                          amount: meals_box
+                                                                  .getAt(index)!
+                                                                  .amount -
+                                                              1));
                                                 }
                                               });
                                             }),
@@ -119,7 +147,20 @@ class _Shopping_CartState extends State<Shopping_Cart> {
                                               setState(() {
                                                 meals_box.putAt(
                                                     index,
-                                                    Meals_list(meal_label: meals_box.getAt(index)!.meal_label, price: meals_box.getAt(index)!.price, image: meals_box.getAt(index)!.image, amount: meals_box.getAt(index)!.amount + 1));
+                                                    Meals_list(
+                                                        meal_label: meals_box
+                                                            .getAt(index)!
+                                                            .meal_label,
+                                                        price: meals_box
+                                                            .getAt(index)!
+                                                            .price,
+                                                        image: meals_box
+                                                            .getAt(index)!
+                                                            .image,
+                                                        amount: meals_box
+                                                                .getAt(index)!
+                                                                .amount +
+                                                            1));
                                               });
                                             }),
                                       ],

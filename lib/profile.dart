@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:warachow/mainPage.dart';
+import 'package:warachow/shopping_cart.dart';
 
 import 'adapters/information.dart';
 
@@ -65,7 +66,7 @@ class _ProfileState extends State<Profile> {
           ),
           Container(
             width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height * 0.33,
+            height: MediaQuery.of(context).size.height * 0.32,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
@@ -119,7 +120,7 @@ class _ProfileState extends State<Profile> {
                   ],
                 ),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.03,
+                  height: MediaQuery.of(context).size.height * 0.02,
                 ),
                 Row(
                   children: [
@@ -283,11 +284,11 @@ class _ProfileState extends State<Profile> {
       ),
       bottomNavigationBar: Container(
         width: MediaQuery.of(context).size.width,
-        height: 60,
+        height:  MediaQuery.of(context).size.height * 0.09,
         child: Column(
           children: [
             Divider(
-                thickness: 0.3,
+                thickness: 0.4,
                 color: Colors.grey[400],
                 indent: 15,
                 endIndent: 15),
@@ -305,13 +306,17 @@ class _ProfileState extends State<Profile> {
                 IconButton(
                   icon: Icon(Icons.home, color: Colors.grey),
                   onPressed: () {
-                    Navigator.push(context,
-                        CupertinoPageRoute(builder: (_) => Main_Page()));
+                    Navigator.pop(context);
                   },
                 ),
                 SizedBox(width: MediaQuery.of(context).size.width * 0.1),
-                Icon(Icons.shopping_cart, color: Colors.grey),
-                SizedBox(width: MediaQuery.of(context).size.width * 0.23),
+                IconButton(
+                  icon: Icon(Icons.shopping_cart, color: Colors.grey),
+                  onPressed: () {
+                    Navigator.push(context,CupertinoPageRoute(builder: (_)=> Shopping_Cart()));
+                  },
+                ),
+
               ],
             ),
           ],

@@ -74,8 +74,7 @@ class _Meal_informationState extends State<Meal_information> {
                         Container(
                             width: MediaQuery.of(context).size.width,
                             height: MediaQuery.of(context).size.height * 0.3,
-                            color: Colors.pink,
-                            child: Image.asset(meals[widget.meal_index].image)),
+                            child: Image.asset(meals[widget.meal_index].image,fit: BoxFit.contain)),
                       ],
                     ),
                     Positioned(
