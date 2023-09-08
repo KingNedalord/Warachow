@@ -212,6 +212,7 @@ class _ProfileState extends State<Profile> {
                             width: MediaQuery.of(context).size.width * 0.4,
                             height: MediaQuery.of(context).size.height * 0.32,
                             child: Column(
+                              mainAxisSize: MainAxisSize.min,
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
