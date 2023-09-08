@@ -15,12 +15,20 @@ class Shopping_Cart extends StatefulWidget {
 
 class _Shopping_CartState extends State<Shopping_Cart> {
   late Box<Meals_list> meals_box;
+  int total_price = 0;
+  int index1 = 0;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     meals_box = Hive.box("meal");
+    int length = meals_box.length;
+    while (index1 != length) {
+      total_price = total_price +
+          meals_box.getAt(index1)!.price * meals_box.getAt(index1)!.amount;
+      index1++;
+    }
   }
 
   @override
@@ -38,7 +46,7 @@ class _Shopping_CartState extends State<Shopping_Cart> {
       ),
       backgroundColor: Color(0xFFFBEDEA),
       body: Padding(
-        padding: const EdgeInsets.all(9.0),
+        padding: const EdgeInsets.all(12),
         child: Column(
           children: [
             Container(
@@ -78,103 +86,165 @@ class _Shopping_CartState extends State<Shopping_Cart> {
                       height: MediaQuery.of(context).size.height * 0.33,
                       child: ListView.separated(
                           itemBuilder: (context, index) {
-                            return Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                Container(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.3,
-                                  height:
-                                      MediaQuery.of(context).size.height * 0.15,
-                                  child: Stack(
-                                    children: [
-                                      Image.asset(
-                                          "assets/background_shoppingcart.png"),
-                                      ClipOval(
-                                        child: SizedBox.fromSize(
-                                            size: Size.fromRadius(20),
-                                            child: Image.asset(
-                                                meals_box.getAt(index)!.image)),
-                                      )
-                                    ],
+                            return Padding(
+                              padding:
+                                  const EdgeInsets.only(top: 10, bottom: 10),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Container(
+                                    width: MediaQuery.of(context).size.width *
+                                        0.28,
+                                    child: ClipOval(
+                                      child: SizedBox.fromSize(
+                                          size: Size.fromRadius(40),
+                                          child: Image.asset(
+                                              meals_box.getAt(index)!.image)),
+                                    ),
                                   ),
-                                ),
-                                Column(
-                                  children: [
-                                    Text(meals_box.getAt(index)!.meal_label),
-                                    Row(
+                                  Container(
+                                    width: MediaQuery.of(context).size.width *
+                                            0.72 -
+                                        24,
+                                    child: Column(
                                       children: [
-                                        IconButton(
-                                            icon: Icon(CupertinoIcons.minus,
-                                                size: 15),
-                                            onPressed: () {
-                                              setState(() {
-                                                if (meals_box
-                                                        .getAt(index)!
-                                                        .amount >
-                                                    1) {
-                                                  meals_box.putAt(
-                                                      index,
-                                                      Meals_list(
-                                                          meal_label: meals_box
-                                                              .getAt(index)!
-                                                              .meal_label,
-                                                          price: meals_box
-                                                              .getAt(index)!
-                                                              .price,
-                                                          image: meals_box
-                                                              .getAt(index)!
-                                                              .image,
-                                                          amount: meals_box
-                                                                  .getAt(index)!
-                                                                  .amount -
-                                                              1));
-                                                }
-                                              });
-                                            }),
-                                        Container(
-                                            width: 20,
-                                            height: 20,
-                                            color: Colors.grey,
-                                            child: Text(
-                                                "${meals_box.getAt(index)!.amount}",
-                                                style: TextStyle(fontSize: 17),
-                                                textAlign: TextAlign.center)),
-                                        IconButton(
-                                            icon: Icon(CupertinoIcons.plus,
-                                                size: 15),
-                                            onPressed: () {
-                                              setState(() {
-                                                meals_box.putAt(
-                                                    index,
-                                                    Meals_list(
-                                                        meal_label: meals_box
-                                                            .getAt(index)!
-                                                            .meal_label,
-                                                        price: meals_box
-                                                            .getAt(index)!
-                                                            .price,
-                                                        image: meals_box
-                                                            .getAt(index)!
-                                                            .image,
-                                                        amount: meals_box
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              "    ${meals_box.getAt(index)!.meal_label}",
+                                              style: TextStyle(
+                                                  fontSize: 15,
+                                                  fontFamily: "EBG"),
+                                            ),
+                                          ],
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Row(
+                                              children: [
+                                                IconButton(
+                                                    icon: Icon(
+                                                        CupertinoIcons.minus,
+                                                        size: 15),
+                                                    onPressed: () {
+                                                      setState(() {
+                                                        if (meals_box
                                                                 .getAt(index)!
-                                                                .amount +
-                                                            1));
-                                              });
-                                            }),
+                                                                .amount >
+                                                            1) {
+                                                          meals_box.putAt(
+                                                              index,
+                                                              Meals_list(
+                                                                  meal_label: meals_box
+                                                                      .getAt(
+                                                                          index)!
+                                                                      .meal_label,
+                                                                  price: meals_box
+                                                                      .getAt(
+                                                                          index)!
+                                                                      .price,
+                                                                  image: meals_box
+                                                                      .getAt(
+                                                                          index)!
+                                                                      .image,
+                                                                  amount: meals_box
+                                                                          .getAt(
+                                                                              index)!
+                                                                          .amount -
+                                                                      1));
+                                                          total_price =
+                                                              total_price -
+                                                                  meals_box
+                                                                      .getAt(
+                                                                          index)!
+                                                                      .price;
+                                                        }
+                                                      });
+                                                    }),
+                                                Container(
+                                                    width: 30,
+                                                    height: 20,
+                                                    color: Colors.grey,
+                                                    child: Text(
+                                                        "${meals_box.getAt(index)!.amount}",
+                                                        style: TextStyle(
+                                                            fontSize: 17),
+                                                        textAlign:
+                                                            TextAlign.center)),
+                                                IconButton(
+                                                    icon: Icon(
+                                                        CupertinoIcons.plus,
+                                                        size: 15),
+                                                    onPressed: () {
+                                                      setState(() {
+                                                        meals_box.putAt(
+                                                            index,
+                                                            Meals_list(
+                                                                meal_label: meals_box
+                                                                    .getAt(
+                                                                        index)!
+                                                                    .meal_label,
+                                                                price: meals_box
+                                                                    .getAt(
+                                                                        index)!
+                                                                    .price,
+                                                                image: meals_box
+                                                                    .getAt(
+                                                                        index)!
+                                                                    .image,
+                                                                amount: meals_box
+                                                                        .getAt(
+                                                                            index)!
+                                                                        .amount +
+                                                                    1));
+                                                        total_price =
+                                                            total_price +
+                                                                meals_box
+                                                                    .getAt(
+                                                                        index)!
+                                                                    .price;
+                                                      });
+                                                    }),
+                                              ],
+                                            ),
+                                            Row(children: [
+                                              Text(
+                                                  "💶${meals_box.getAt(index)!.price * meals_box.getAt(index)!.amount}",
+                                                  style: TextStyle(
+                                                      fontSize: 20,
+                                                      fontWeight:
+                                                          FontWeight.w500)),
+                                              IconButton(
+                                                  onPressed: () {
+                                                    setState(() {
+                                                      total_price = total_price -
+                                                          meals_box
+                                                                  .getAt(index)!
+                                                                  .price *
+                                                              meals_box
+                                                                  .getAt(index)!
+                                                                  .amount;
+                                                      meals_box.deleteAt(index);
+                                                    });
+                                                  },
+                                                  icon: Icon(
+                                                    Icons.close,
+                                                    size: 15,
+                                                    color: Colors.red,
+                                                  ))
+                                            ])
+                                          ],
+                                        )
                                       ],
-                                    )
-                                  ],
-                                ),
-                                Row(children: [
-                                  Text(
-                                      "💶${meals_box.getAt(index)!.price * meals_box.getAt(index)!.amount}",
-                                      style: TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w500))
-                                ])
-                              ],
+                                    ),
+                                  ),
+                                ],
+                              ),
                             );
                           },
                           separatorBuilder: (context, index) {
@@ -187,15 +257,105 @@ class _Shopping_CartState extends State<Shopping_Cart> {
                           },
                           itemCount: meals_box.length)),
                   Container(
+                    padding: EdgeInsets.only(bottom: 15),
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height * 0.17,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Divider(
+                            indent: 15,
+                            endIndent: 15,
+                            color: Colors.grey,
+                            thickness: 1),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text("Purchase Total",
+                                textAlign: TextAlign.end,
+                                style: TextStyle(fontSize: 18)),
+                            Text("Voucher Code?",
+                                textAlign: TextAlign.end,
+                                style: TextStyle(
+                                    fontSize: 18, color: Color(0xFFFF785B))),
+                            Text("Vat 5%",
+                                textAlign: TextAlign.end,
+                                style: TextStyle(fontSize: 18))
+                          ],
+                        ),
+                        SizedBox(width: 10),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text("💶 ${total_price}",
+                                style: TextStyle(fontSize: 18),
+                                textAlign: TextAlign.center),
+                            Container(
+                              width: MediaQuery.of(context).size.width * 0.26,
+                              height: MediaQuery.of(context).size.height * 0.05,
+                              child: TextField(
+                                decoration: InputDecoration(
+                                    border: OutlineInputBorder(),
+                                    hoverColor: Color(0xFFFF785B),
+                                    labelText: "Enter here"),
+                              ),
+                            ),
+                            Text("💶 ${(total_price / 100 * 5).round()}",
+                                style: TextStyle(fontSize: 18),
+                                textAlign: TextAlign.center)
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                   Container(
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height * 0.05,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                            bottomRight: Radius.circular(10),
+                            bottomLeft: Radius.circular(10)),
+                        color: Color(0xFFFF785B)),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text(
+                          "Sub Total     💶 ${total_price + (total_price / 100 * 5).round()}     ",
+                          style: TextStyle(color: Colors.white, fontSize: 18),
+                        )
+                      ],
+                    ),
                   )
                 ],
               ),
+            ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.06),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  margin: EdgeInsets.all(15),
+                  width: MediaQuery.of(context).size.width * 0.35,
+                  height: MediaQuery.of(context).size.height * 0.05,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      color: Color(0xFFFF785B)),
+                  child: MaterialButton(
+                    onPressed: () {
+                     setState(() {
+                       meals_box.delete;
+                     });
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("Checkout",
+                            style: TextStyle(color: Colors.white, fontSize: 18))
+                      ],
+                    ),
+                  ),
+                )
+              ],
             )
           ],
         ),
@@ -211,8 +371,8 @@ class _Shopping_CartState extends State<Shopping_Cart> {
                 indent: 15,
                 endIndent: 15),
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(width: MediaQuery.of(context).size.width * 0.27),
                 IconButton(
                     icon: Icon(Icons.person),
                     color: Colors.grey,
@@ -229,8 +389,12 @@ class _Shopping_CartState extends State<Shopping_Cart> {
                   },
                 ),
                 SizedBox(width: MediaQuery.of(context).size.width * 0.1),
-                Icon(Icons.shopping_cart, color: Colors.grey),
-                SizedBox(width: MediaQuery.of(context).size.width * 0.23),
+                IconButton(
+                    icon: Icon(Icons.arrow_back_ios_new),
+                    color: Colors.grey,
+                    onPressed: () {
+                      Navigator.pop(context);
+                    }),
               ],
             ),
           ],

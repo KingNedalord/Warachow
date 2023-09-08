@@ -106,6 +106,7 @@ class _Main_DishesState extends State<Main_Dishes> {
                   left: index % 2 == 0 ? 12 : 0,
                   right: index % 2 == 0 ? 0 : 12,
                 ),
+                width: MediaQuery.of(context).size.width * 0.5,
                 decoration: BoxDecoration(
                     border: Border(
                         bottom:
@@ -115,7 +116,7 @@ class _Main_DishesState extends State<Main_Dishes> {
                     ClipRRect(
                       borderRadius: BorderRadius.circular(20), // Image border
                       child: SizedBox.fromSize(
-                          size: Size.fromRadius(48), // Image radius
+                          size: Size.fromRadius(45), // Image radius
                           child: Image.asset(meals[index].image)),
                     ),
                     Row(
@@ -125,11 +126,11 @@ class _Main_DishesState extends State<Main_Dishes> {
                           children: [
                             Text(
                               meals[index].meal_label,
-                              style: TextStyle(fontSize: 20),
+                              style: TextStyle(fontSize: 18),
                             ),
                             Container(
-                                width: 110,
-                                height: 50,
+                                width: 190,
+                                height: 85,
                                 child: MaterialButton(
                                     onPressed: () {
                                       Navigator.push(

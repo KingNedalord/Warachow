@@ -1,9 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:warachow/mainPage.dart';
 import 'package:warachow/shopping_cart.dart';
-
 import 'adapters/information.dart';
 
 class Profile extends StatefulWidget {
@@ -210,8 +208,9 @@ class _ProfileState extends State<Profile> {
                           title: Text("Edit window"),
                           content: Container(
                             width: MediaQuery.of(context).size.width * 0.4,
-                            height: MediaQuery.of(context).size.height * 0.32,
+                            height: MediaQuery.of(context).size.height * 0.30,
                             child: Column(
+                              mainAxisSize: MainAxisSize.min,
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
@@ -293,15 +292,9 @@ class _ProfileState extends State<Profile> {
                 indent: 15,
                 endIndent: 15),
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(width: MediaQuery.of(context).size.width * 0.27),
-                IconButton(
-                    icon: Icon(Icons.person),
-                    color: Colors.grey,
-                    onPressed: () {
-                      Navigator.push(context,
-                          CupertinoPageRoute(builder: (_) => Profile()));
-                    }),
+                Icon(Icons.person),
                 SizedBox(width: MediaQuery.of(context).size.width * 0.1),
                 IconButton(
                   icon: Icon(Icons.home, color: Colors.grey),
@@ -316,7 +309,6 @@ class _ProfileState extends State<Profile> {
                     Navigator.push(context,CupertinoPageRoute(builder: (_)=> Shopping_Cart()));
                   },
                 ),
-
               ],
             ),
           ],
