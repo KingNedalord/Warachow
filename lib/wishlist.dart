@@ -26,6 +26,16 @@ class _WishListState extends State<WishList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios_new, color: Colors.black, size: 25),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
       body: Padding(
         padding: const EdgeInsets.only(
           left: 12,
@@ -71,7 +81,14 @@ class _WishListState extends State<WishList> {
                 itemCount: wish_box.length,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
-                  if (wish_box.isNotEmpty){
+                  if (wish_box.isEmpty){
+                    return Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("Nothing to show",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w600,fontFamily: "EBG"),),
+                      ],
+                    );
+                  }else{
                     return Row(
                       children: [
                         Column(
@@ -89,7 +106,7 @@ class _WishListState extends State<WishList> {
                                       topLeft: Radius.circular(15),
                                       topRight: Radius.circular(15)),
                                   child: Image.asset(wish_box.getAt(index)!.image,
-                                      fit: BoxFit.fill)),
+                                      fit: BoxFit.contain)),
                             ),
                             Container(
                               height: MediaQuery.of(context).size.height * 0.1,
@@ -103,7 +120,7 @@ class _WishListState extends State<WishList> {
                                     width:
                                     MediaQuery.of(context).size.width * 0.4,
                                     decoration: BoxDecoration(
-                                        color: Colors.pink,
+                                        color: Color(0xFFFF785B),
                                         borderRadius: BorderRadius.only(
                                             topRight: Radius.circular(15),
                                             bottomRight: Radius.circular(15))),
@@ -128,7 +145,7 @@ class _WishListState extends State<WishList> {
                                     width:
                                     MediaQuery.of(context).size.width * 0.15,
                                     decoration: BoxDecoration(
-                                        color: Colors.pink,
+                                        color: Color(0xFFFF785B),
                                         borderRadius: BorderRadius.only(
                                             topLeft: Radius.circular(15),
                                             bottomLeft: Radius.circular(15))),
@@ -162,7 +179,7 @@ class _WishListState extends State<WishList> {
                                   children: [
                                     Text("💶 ${wish_box.getAt(index)!.price}",
                                         style: TextStyle(
-                                            fontSize: 20,
+                                            fontSize: 30,
                                             color: Color(0xFFFF785B),
                                             fontWeight: FontWeight.w600))
                                   ],
@@ -170,13 +187,6 @@ class _WishListState extends State<WishList> {
                           ],
                         ),
                         SizedBox(width: 10)
-                      ],
-                    );
-                  }else{
-                    return Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text("Nothing to show",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w600,fontFamily: "EBG"),),
                       ],
                     );
                   }
@@ -188,7 +198,7 @@ class _WishListState extends State<WishList> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    height: MediaQuery.of(context).size.height * 0.1,
+                    height: MediaQuery.of(context).size.height * 0.08,
                     width: MediaQuery.of(context).size.width * 0.35,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(30),
