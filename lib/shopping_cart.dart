@@ -48,6 +48,7 @@ class _Shopping_CartState extends State<Shopping_Cart> {
       body: Padding(
         padding: const EdgeInsets.all(12),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
               width: MediaQuery.of(context).size.width,
@@ -56,7 +57,7 @@ class _Shopping_CartState extends State<Shopping_Cart> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(left: 20),
+                    padding: const EdgeInsets.only(left: 20,top: 10),
                     child: Text(
                       "Your Shopping Cart",
                       style: TextStyle(

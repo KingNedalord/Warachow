@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
 import 'adapters/meals_list.dart';
+import 'adapters/wishlist_adapter.dart';
 
 class Meal_Information2 extends StatefulWidget {
   final meal_index2;
@@ -40,12 +41,13 @@ class _Meal_Information2State extends State<Meal_Information2> {
   ];
 
   late Box<Meals_list> meals_box;
-
+  late Box<Wishlist> wish_box;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     meals_box = Hive.box("meal");
+    wish_box = Hive.box("wishlist");
   }
 
   @override
@@ -58,8 +60,11 @@ class _Meal_Information2State extends State<Meal_Information2> {
               setState(() {
                 if (isLiked2 == false) {
                   isLiked2 = true;
+                  Wishlist wishlist = Wishlist(meal_label: meals[widget.meal_index2].meal_label, price: meals[widget.meal_index2].price, image: meals[widget.meal_index2].image, amount: 1, meal_index: widget.meal_index2);
+                  wish_box.add(wishlist);
                 } else {
                   isLiked2 = false;
+                  wish_box.deleteAt(widget.meal_index2);
                 }
               });
             },
@@ -91,7 +96,7 @@ class _Meal_Information2State extends State<Meal_Information2> {
                             width: MediaQuery.of(context).size.width,
                             height: MediaQuery.of(context).size.height * 0.3,
                             child:
-                                Image.asset(meals[widget.meal_index2].image,fit: BoxFit.contain)),
+                                Image.asset(meals[widget.meal_index2].image)),
                       ],
                     ),
                     Positioned(
@@ -102,8 +107,11 @@ class _Meal_Information2State extends State<Meal_Information2> {
                             setState(() {
                               if (isLiked2 == false) {
                                 isLiked2 = true;
+                                Wishlist wishlist = Wishlist(meal_label: meals[widget.meal_index2].meal_label, price: meals[widget.meal_index2].price, image: meals[widget.meal_index2].image, amount: 1, meal_index: widget.meal_index2);
+                                wish_box.add(wishlist);
                               } else {
                                 isLiked2 = false;
+                                wish_box.deleteAt(widget.meal_index2);
                               }
                             });
                           },

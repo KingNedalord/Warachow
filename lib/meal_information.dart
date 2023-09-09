@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
 import 'adapters/meals_list.dart';
+import 'adapters/wishlist_adapter.dart';
 
 class Meal_information extends StatefulWidget {
   final meal_index;
@@ -26,11 +27,13 @@ class _Meal_informationState extends State<Meal_information> {
   ];
 
   late Box<Meals_list> meals_box;
+  late Box<Wishlist> wish_box;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     meals_box = Hive.box("meal");
+    wish_box = Hive.box("wishlist");
   }
   @override
   Widget build(BuildContext context) {
@@ -42,8 +45,11 @@ class _Meal_informationState extends State<Meal_information> {
               setState(() {
                 if (isLiked == false) {
                   isLiked = true;
+                  Wishlist wishlist = Wishlist(meal_label: meals[widget.meal_index].meal_label, price: meals[widget.meal_index].price, image: meals[widget.meal_index].image, amount: 1, meal_index: widget.meal_index);
+                  wish_box.add(wishlist);
                 } else {
                   isLiked = false;
+                  wish_box.deleteAt(widget.meal_index);
                 }
               });
             },
@@ -74,7 +80,7 @@ class _Meal_informationState extends State<Meal_information> {
                         Container(
                             width: MediaQuery.of(context).size.width,
                             height: MediaQuery.of(context).size.height * 0.3,
-                            child: Image.asset(meals[widget.meal_index].image,fit: BoxFit.contain)),
+                            child: Image.asset(meals[widget.meal_index].image)),
                       ],
                     ),
                     Positioned(
@@ -85,8 +91,11 @@ class _Meal_informationState extends State<Meal_information> {
                             setState(() {
                               if (isLiked == false) {
                                 isLiked = true;
+                                Wishlist wishlist = Wishlist(meal_label: meals[widget.meal_index].meal_label, price: meals[widget.meal_index].price, image: meals[widget.meal_index].image, amount: 1, meal_index: widget.meal_index);
+                                wish_box.add(wishlist);
                               } else {
                                 isLiked = false;
+                                wish_box.deleteAt(widget.meal_index);
                               }
                             });
                           },
@@ -109,7 +118,6 @@ class _Meal_informationState extends State<Meal_information> {
                 children: [
                   Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,

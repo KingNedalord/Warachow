@@ -4,6 +4,7 @@ import 'package:hive/hive.dart';
 import 'package:warachow/best_sellers.dart';
 import 'package:warachow/loyalty_points.dart';
 import 'package:warachow/profile.dart';
+import 'package:warachow/wishlist.dart';
 
 import 'adapters/information.dart';
 import 'main_dishes.dart';
@@ -171,8 +172,13 @@ class NavigationDrawer1 extends StatelessWidget {
                   width: 50,
                   height: 50,
                   child: Image.asset("assets/heart.png")),
-              Text("Wishlist",
-                  style: TextStyle(fontSize: 25, color: Colors.white))
+              TextButton(
+                  child: Text("Wishlist",
+                      style: TextStyle(fontSize: 25, color: Colors.white)),
+                  onPressed: () {
+                    Navigator.push(context,
+                        CupertinoPageRoute(builder: (_) => WishList()));
+                  })
             ],
           ),
           Row(
