@@ -344,17 +344,8 @@ class _Shopping_CartState extends State<Shopping_Cart> {
                       color: Color(0xFFFF785B)),
                   child: MaterialButton(
                     onPressed: () {
-                      // setState(() {
-                      //   int index2 = 0;
-                      //   int length = meals_box.length;
-                      //   while (index2 != length){
-                      //     meals_box.deleteAt(index2);
-                      //     index2++;
-                      //     total_price = 0 ;
-                      //   }
-                      // });
                       Navigator.push(context,
-                          CupertinoPageRoute(builder: (_) => Checkout_Page()));
+                          CupertinoPageRoute(builder: (_) => Checkout_Page(total_price: total_price)));
                     },
                     child: Text(
                       "Checkout",

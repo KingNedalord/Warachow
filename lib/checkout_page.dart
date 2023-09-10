@@ -7,7 +7,9 @@ import 'adapters/meals_list.dart';
 import 'mainPage.dart';
 
 class Checkout_Page extends StatefulWidget {
-  const Checkout_Page({super.key});
+  final total_price;
+
+  const Checkout_Page({super.key, required this.total_price});
 
   @override
   State<Checkout_Page> createState() => _Checkout_PageState();
@@ -131,25 +133,26 @@ class _Checkout_PageState extends State<Checkout_Page> {
                                 return Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text("Pasta Fritata",
+                                    Text(meals_box.getAt(index)!.meal_label,
                                         style: TextStyle(
                                             fontSize: 12,
                                             fontWeight: FontWeight.w500)),
-                                    Text("x3",
+                                    Text("x${meals_box.getAt(index)!.amount}",
                                         style: TextStyle(
                                             fontSize: 12,
                                             color: Colors.grey,
                                             fontWeight: FontWeight.w500)),
                                     VerticalDivider(
                                         color: Colors.grey, thickness: 1),
-                                    Text("1234",
+                                    Text(
+                                        "💶 ${meals_box.getAt(index)!.amount * meals_box.getAt(index)!.price}",
                                         style: TextStyle(
                                             fontSize: 12,
                                             fontWeight: FontWeight.w500))
                                   ],
                                 );
                               },
-                              itemCount: 10),
+                              itemCount: meals_box.length),
                         ),
                         Container(
                           width: MediaQuery.of(context).size.width,
@@ -172,7 +175,7 @@ class _Checkout_PageState extends State<Checkout_Page> {
                                   endIndent: 10,
                                   width: 30,
                                   color: Colors.grey),
-                              Text("9631",
+                              Text("💶 ${widget.total_price}",
                                   style: TextStyle(
                                       fontSize: 12,
                                       color: Colors.white,
@@ -215,7 +218,8 @@ class _Checkout_PageState extends State<Checkout_Page> {
                                 hintText: "Phone Number"),
                           ),
                         ),
-                        Container(width: MediaQuery.of(context).size.width,
+                        Container(
+                          width: MediaQuery.of(context).size.width,
                           height: MediaQuery.of(context).size.height * 0.1,
                           child: TextField(
                             decoration: InputDecoration(
@@ -234,11 +238,23 @@ class _Checkout_PageState extends State<Checkout_Page> {
               width: MediaQuery.of(context).size.width * 0.4,
               height: MediaQuery.of(context).size.height * 0.06,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),color: Color(0xFFFF785B)),
-              child: MaterialButton(onPressed: (){},child: Text("Pay Now",
-                  style: TextStyle(
-                  fontSize: 12,color: Colors.white,
-                  fontWeight: FontWeight.w500))),
+                  borderRadius: BorderRadius.circular(20),
+                  color: Color(0xFFFF785B)),
+              child: MaterialButton(
+                  onPressed: () {
+                    int index2 = 0;
+                    int length = meals_box.length;
+                    while (index2 != length){
+                      meals_box.deleteAt(index2);
+                      index2++;
+                    };
+                    Navigator.push(context, CupertinoPageRoute(builder: (_) => Main_Page()));
+                    },
+                  child: Text("Pay Now",
+                      style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w500))),
             ),
           ],
         ),

@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:warachow/checkout_page.dart';
 import 'package:warachow/profile.dart';
+import 'package:warachow/shopping_cart.dart';
 
 import 'adapters/meals_list.dart';
 import 'adapters/wishlist_adapter.dart';
@@ -231,7 +231,7 @@ class _WishListState extends State<WishList> {
                                   amount: wish_box.getAt(index1)!.amount));
                               index1++;
                             }
-                            Navigator.push(context, CupertinoPageRoute(builder: (_)=>Checkout_Page()));
+                            Navigator.push(context, CupertinoPageRoute(builder: (_)=>Shopping_Cart()));
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                                 content: Text(
