@@ -27,12 +27,27 @@ class _Best_SellersState extends State<Best_Sellers> {
   }
 
   List<Meals_list> meals = [
-    Meals_list(meal_label: "Beef Burger", price: 5, image: "assets/21.png",amount: 1),
-    Meals_list(meal_label: "Shawarma", price: 6, image: "assets/22.png",amount: 1),
-    Meals_list(meal_label: "Cheesy Bread", price: 8, image: "assets/24.png",amount: 1),
-    Meals_list(meal_label: "Pizza Peperoni", price: 3, image: "assets/14.png",amount: 1),
-    Meals_list(meal_label: "Amala", price: 10, image: "assets/15.png",amount: 1),
-    Meals_list(meal_label: "Jollof Spaghetti", price: 5, image: "assets/26.png",amount: 1)
+    Meals_list(
+        meal_label: "Beef Burger", price: 5, image: "assets/21.png", amount: 1),
+    Meals_list(
+        meal_label: "Shawarma", price: 6, image: "assets/22.png", amount: 1),
+    Meals_list(
+        meal_label: "Cheesy Bread",
+        price: 8,
+        image: "assets/24.png",
+        amount: 1),
+    Meals_list(
+        meal_label: "Pizza Peperoni",
+        price: 3,
+        image: "assets/14.png",
+        amount: 1),
+    Meals_list(
+        meal_label: "Amala", price: 10, image: "assets/15.png", amount: 1),
+    Meals_list(
+        meal_label: "Jollof Spaghetti",
+        price: 5,
+        image: "assets/26.png",
+        amount: 1)
   ];
 
   @override
@@ -51,6 +66,10 @@ class _Best_SellersState extends State<Best_Sellers> {
             backgroundColor: Color(0xFFFF785B),
             leading: Text(""),
             pinned: true,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(12),
+                    bottomRight: Radius.circular(12))),
             flexibleSpace: Column(
               children: [
                 Text(
@@ -123,17 +142,30 @@ class _Best_SellersState extends State<Best_Sellers> {
                               style: TextStyle(fontSize: 20),
                             ),
                             Container(
-                                width: 90,
-                                height: 40,
-                                child: MaterialButton(
-                                    onPressed: () {
-                                      Navigator.push(
-                                          context,
-                                          CupertinoPageRoute(
-                                              builder: (_) => Meal_Information2(
-                                                  meal_index2: index)));
-                                    },
-                                    child: Image.asset("assets/buy_now.png")))
+                              margin: EdgeInsets.only(top:10),
+                              width: MediaQuery.of(context).size.width * 0.3,
+                              height: MediaQuery.of(context).size.height * 0.05,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15),
+                                  color: Color(0xFFFF785B)),
+                              child: MaterialButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      CupertinoPageRoute(
+                                          builder: (_) => Meal_Information2(
+                                              meal_index2: index)));
+                                },
+                                child: Text(
+                                  "Buy Now",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w500),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                            )
                           ],
                         )
                       ],
@@ -147,7 +179,7 @@ class _Best_SellersState extends State<Best_Sellers> {
       ),
       bottomNavigationBar: Container(
         width: MediaQuery.of(context).size.width,
-        height:  MediaQuery.of(context).size.height * 0.09,
+        height: MediaQuery.of(context).size.height * 0.09,
         child: Column(
           children: [
             Divider(
@@ -176,10 +208,10 @@ class _Best_SellersState extends State<Best_Sellers> {
                 IconButton(
                   icon: Icon(Icons.shopping_cart, color: Colors.grey),
                   onPressed: () {
-                    Navigator.push(context,CupertinoPageRoute(builder: (_)=> Shopping_Cart()));
+                    Navigator.push(context,
+                        CupertinoPageRoute(builder: (_) => Shopping_Cart()));
                   },
                 ),
-
               ],
             ),
           ],

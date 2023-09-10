@@ -12,5 +12,6 @@ class Meals_list{
   @HiveField(3)
   int amount;
 
+
   Meals_list({required this.meal_label,required this.price,required this.image,required this.amount});
 }

@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:warachow/checkout_page.dart';
 import 'package:warachow/profile.dart';
 
+import 'adapters/meals_list.dart';
 import 'adapters/wishlist_adapter.dart';
 import 'mainPage.dart';
 
@@ -15,14 +17,19 @@ class WishList extends StatefulWidget {
 
 class _WishListState extends State<WishList> {
   bool isLiked = true;
+  int index1 = 0;
 
   late Box<Wishlist> wish_box;
+  late Box<Meals_list> meals_box;
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     wish_box = Hive.box("wishlist");
+    meals_box = Hive.box("meal");
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,14 +88,20 @@ class _WishListState extends State<WishList> {
                 itemCount: wish_box.length,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
-                  if (wish_box.isEmpty){
+                  if (wish_box.isEmpty) {
                     return Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("Nothing to show",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w600,fontFamily: "EBG"),),
+                        Text(
+                          "Nothing to show",
+                          style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w600,
+                              fontFamily: "EBG"),
+                        ),
                       ],
                     );
-                  }else{
+                  } else {
                     return Row(
                       children: [
                         Column(
@@ -105,20 +118,22 @@ class _WishListState extends State<WishList> {
                                   borderRadius: BorderRadius.only(
                                       topLeft: Radius.circular(15),
                                       topRight: Radius.circular(15)),
-                                  child: Image.asset(wish_box.getAt(index)!.image,
+                                  child: Image.asset(
+                                      wish_box.getAt(index)!.image,
                                       fit: BoxFit.contain)),
                             ),
                             Container(
                               height: MediaQuery.of(context).size.height * 0.1,
                               width: MediaQuery.of(context).size.width - 30,
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Container(
-                                    height:
-                                    MediaQuery.of(context).size.height * 0.08,
+                                    height: MediaQuery.of(context).size.height *
+                                        0.08,
                                     width:
-                                    MediaQuery.of(context).size.width * 0.4,
+                                        MediaQuery.of(context).size.width * 0.4,
                                     decoration: BoxDecoration(
                                         color: Color(0xFFFF785B),
                                         borderRadius: BorderRadius.only(
@@ -126,9 +141,9 @@ class _WishListState extends State<WishList> {
                                             bottomRight: Radius.circular(15))),
                                     child: Column(
                                       mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                          MainAxisAlignment.spaceBetween,
                                       crossAxisAlignment:
-                                      CrossAxisAlignment.start,
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Text(wish_box.getAt(index)!.meal_label,
                                             style: TextStyle(
@@ -140,10 +155,10 @@ class _WishListState extends State<WishList> {
                                     ),
                                   ),
                                   Container(
-                                    height:
-                                    MediaQuery.of(context).size.height * 0.08,
-                                    width:
-                                    MediaQuery.of(context).size.width * 0.15,
+                                    height: MediaQuery.of(context).size.height *
+                                        0.08,
+                                    width: MediaQuery.of(context).size.width *
+                                        0.15,
                                     decoration: BoxDecoration(
                                         color: Color(0xFFFF785B),
                                         borderRadius: BorderRadius.only(
@@ -172,7 +187,8 @@ class _WishListState extends State<WishList> {
                               ),
                             ),
                             Container(
-                                height: MediaQuery.of(context).size.height * 0.1,
+                                height:
+                                    MediaQuery.of(context).size.height * 0.1,
                                 width: MediaQuery.of(context).size.width - 30,
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -204,7 +220,29 @@ class _WishListState extends State<WishList> {
                         borderRadius: BorderRadius.circular(30),
                         color: Color(0xFFFF785B)),
                     child: MaterialButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          if (wish_box.length != 0) {
+                            int length = wish_box.length;
+                            while (index1 != length) {
+                              meals_box.add(Meals_list(
+                                  meal_label: wish_box.getAt(index1)!.meal_label,
+                                  price: wish_box.getAt(index1)!.price,
+                                  image: wish_box.getAt(index1)!.image,
+                                  amount: wish_box.getAt(index1)!.amount));
+                              index1++;
+                            }
+                            Navigator.push(context, CupertinoPageRoute(builder: (_)=>Checkout_Page()));
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                content: Text(
+                              "Your Wishlist is Empty",
+                              style: TextStyle(
+                                  color: Colors.red,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w600),
+                            )));
+                          }
+                        },
                         child: Text(
                           "Buy Now",
                           style: TextStyle(

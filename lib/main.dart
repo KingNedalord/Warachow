@@ -7,6 +7,7 @@ import 'package:warachow/welcome.dart';
 import 'adapters/information.dart';
 import 'adapters/meals_list.dart';
 import 'adapters/wishlist_adapter.dart';
+import 'checkout_page.dart';
 import 'mainPage.dart';
 
 
@@ -32,8 +33,8 @@ void main() async {
   Hive.registerAdapter<Wishlist>(WishlistAdapter());
   wish_box = await Hive.openBox<Wishlist>("wishlist");
   runApp(MaterialApp(
-    home:
-    text == true ? Main_Page() : Welcome(),
+    home:Checkout_Page(),
+    // text == true ? Main_Page() : Welcome(),
     debugShowCheckedModeBanner: false,
   ));
 }

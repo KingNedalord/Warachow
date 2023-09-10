@@ -4,6 +4,7 @@ import 'package:hive/hive.dart';
 import 'package:warachow/profile.dart';
 
 import 'adapters/meals_list.dart';
+import 'checkout_page.dart';
 import 'mainPage.dart';
 
 class Shopping_Cart extends StatefulWidget {
@@ -57,7 +58,7 @@ class _Shopping_CartState extends State<Shopping_Cart> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(left: 20,top: 10),
+                    padding: const EdgeInsets.only(left: 20, top: 10),
                     child: Text(
                       "Your Shopping Cart",
                       style: TextStyle(
@@ -298,7 +299,7 @@ class _Shopping_CartState extends State<Shopping_Cart> {
                                 decoration: InputDecoration(
                                     border: OutlineInputBorder(),
                                     hoverColor: Color(0xFFFF785B),
-                                    labelText: "Enter here"),
+                                    hintText: "Enter here"),
                               ),
                             ),
                             Text("💶 ${(total_price / 100 * 5).round()}",
@@ -330,7 +331,7 @@ class _Shopping_CartState extends State<Shopping_Cart> {
                 ],
               ),
             ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.06),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.04),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -343,16 +344,22 @@ class _Shopping_CartState extends State<Shopping_Cart> {
                       color: Color(0xFFFF785B)),
                   child: MaterialButton(
                     onPressed: () {
-                     setState(() {
-                       meals_box.delete;
-                     });
+                      // setState(() {
+                      //   int index2 = 0;
+                      //   int length = meals_box.length;
+                      //   while (index2 != length){
+                      //     meals_box.deleteAt(index2);
+                      //     index2++;
+                      //     total_price = 0 ;
+                      //   }
+                      // });
+                      Navigator.push(context,
+                          CupertinoPageRoute(builder: (_) => Checkout_Page()));
                     },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text("Checkout",
-                            style: TextStyle(color: Colors.white, fontSize: 18))
-                      ],
+                    child: Text(
+                      "Checkout",
+                      style: TextStyle(color: Colors.white, fontSize: 18),
+                      textAlign: TextAlign.center,
                     ),
                   ),
                 )
@@ -391,7 +398,7 @@ class _Shopping_CartState extends State<Shopping_Cart> {
                 ),
                 SizedBox(width: MediaQuery.of(context).size.width * 0.1),
                 IconButton(
-                    icon: Icon(Icons.arrow_back_ios_new),
+                    icon: Icon(Icons.shopping_cart),
                     color: Colors.grey,
                     onPressed: () {
                       Navigator.pop(context);

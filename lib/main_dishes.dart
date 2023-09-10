@@ -27,12 +27,27 @@ class _Main_DishesState extends State<Main_Dishes> {
   }
 
   List<Meals_list> meals = [
-    Meals_list(meal_label: "Fried Rice", price: 5, image: "assets/11.png",amount: 1),
-    Meals_list(meal_label: "Jollof Rice", price: 6, image: "assets/12.png",amount: 1),
-    Meals_list(meal_label: "Pasta Rigatoni", price: 4, image: "assets/13.png",amount: 1),
-    Meals_list(meal_label: "Pizza Peperoni", price: 8, image: "assets/14.png",amount: 1),
-    Meals_list(meal_label: "Amala", price: 10, image: "assets/15.png",amount: 1),
-    Meals_list(meal_label: "Butterfly Pasta", price: 8, image: "assets/16.png",amount: 1)
+    Meals_list(
+        meal_label: "Fried Rice", price: 5, image: "assets/11.png", amount: 1),
+    Meals_list(
+        meal_label: "Jollof Rice", price: 6, image: "assets/12.png", amount: 1),
+    Meals_list(
+        meal_label: "Pasta Rigatoni",
+        price: 4,
+        image: "assets/13.png",
+        amount: 1),
+    Meals_list(
+        meal_label: "Pizza Peperoni",
+        price: 8,
+        image: "assets/14.png",
+        amount: 1),
+    Meals_list(
+        meal_label: "Amala", price: 10, image: "assets/15.png", amount: 1),
+    Meals_list(
+        meal_label: "Butterfly Pasta",
+        price: 8,
+        image: "assets/16.png",
+        amount: 1)
   ];
 
   @override
@@ -106,7 +121,6 @@ class _Main_DishesState extends State<Main_Dishes> {
                   left: index % 2 == 0 ? 12 : 0,
                   right: index % 2 == 0 ? 0 : 12,
                 ),
-                width: MediaQuery.of(context).size.width * 0.5,
                 decoration: BoxDecoration(
                     border: Border(
                         bottom:
@@ -116,7 +130,7 @@ class _Main_DishesState extends State<Main_Dishes> {
                     ClipRRect(
                       borderRadius: BorderRadius.circular(20), // Image border
                       child: SizedBox.fromSize(
-                          size: Size.fromRadius(45), // Image radius
+                          size: Size.fromRadius(48), // Image radius
                           child: Image.asset(meals[index].image)),
                     ),
                     Row(
@@ -126,20 +140,33 @@ class _Main_DishesState extends State<Main_Dishes> {
                           children: [
                             Text(
                               meals[index].meal_label,
-                              style: TextStyle(fontSize: 18),
+                              style: TextStyle(fontSize: 20),
                             ),
                             Container(
-                                width: 190,
-                                height: 85,
-                                child: MaterialButton(
-                                    onPressed: () {
-                                      Navigator.push(
-                                          context,
-                                          CupertinoPageRoute(
-                                              builder: (_) => Meal_information(
-                                                  meal_index: index)));
-                                    },
-                                    child: Image.asset("assets/buy_now.png")))
+                              margin: EdgeInsets.only(top:10),
+                             width: MediaQuery.of(context).size.width * 0.3,
+                              height: MediaQuery.of(context).size.height * 0.05,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15),
+                                  color: Color(0xFFFF785B)),
+                              child: MaterialButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      CupertinoPageRoute(
+                                          builder: (_) => Meal_information(
+                                              meal_index: index)));
+                                },
+                                child: Text(
+                                  "Buy Now",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w500),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                            )
                           ],
                         )
                       ],
@@ -153,7 +180,7 @@ class _Main_DishesState extends State<Main_Dishes> {
       ),
       bottomNavigationBar: Container(
         width: MediaQuery.of(context).size.width,
-        height:  MediaQuery.of(context).size.height * 0.09,
+        height: MediaQuery.of(context).size.height * 0.09,
         child: Column(
           children: [
             Divider(
@@ -182,10 +209,10 @@ class _Main_DishesState extends State<Main_Dishes> {
                 IconButton(
                   icon: Icon(Icons.shopping_cart, color: Colors.grey),
                   onPressed: () {
-                    Navigator.push(context,CupertinoPageRoute(builder: (_)=> Shopping_Cart()));
+                    Navigator.push(context,
+                        CupertinoPageRoute(builder: (_) => Shopping_Cart()));
                   },
                 ),
-
               ],
             ),
           ],

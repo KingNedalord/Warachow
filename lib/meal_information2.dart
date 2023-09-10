@@ -42,6 +42,7 @@ class _Meal_Information2State extends State<Meal_Information2> {
 
   late Box<Meals_list> meals_box;
   late Box<Wishlist> wish_box;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -60,7 +61,12 @@ class _Meal_Information2State extends State<Meal_Information2> {
               setState(() {
                 if (isLiked2 == false) {
                   isLiked2 = true;
-                  Wishlist wishlist = Wishlist(meal_label: meals[widget.meal_index2].meal_label, price: meals[widget.meal_index2].price, image: meals[widget.meal_index2].image, amount: 1, meal_index: widget.meal_index2);
+                  Wishlist wishlist = Wishlist(
+                      meal_label: meals[widget.meal_index2].meal_label,
+                      price: meals[widget.meal_index2].price,
+                      image: meals[widget.meal_index2].image,
+                      amount: 1,
+                      meal_index: widget.meal_index2);
                   wish_box.add(wishlist);
                 } else {
                   isLiked2 = false;
@@ -95,8 +101,8 @@ class _Meal_Information2State extends State<Meal_Information2> {
                         Container(
                             width: MediaQuery.of(context).size.width,
                             height: MediaQuery.of(context).size.height * 0.3,
-                            child:
-                                Image.asset(meals[widget.meal_index2].image,fit: BoxFit.contain)),
+                            child: Image.asset(meals[widget.meal_index2].image,
+                                fit: BoxFit.contain)),
                       ],
                     ),
                     Positioned(
@@ -107,7 +113,13 @@ class _Meal_Information2State extends State<Meal_Information2> {
                             setState(() {
                               if (isLiked2 == false) {
                                 isLiked2 = true;
-                                Wishlist wishlist = Wishlist(meal_label: meals[widget.meal_index2].meal_label, price: meals[widget.meal_index2].price, image: meals[widget.meal_index2].image, amount: 1, meal_index: widget.meal_index2);
+                                Wishlist wishlist = Wishlist(
+                                    meal_label:
+                                        meals[widget.meal_index2].meal_label,
+                                    price: meals[widget.meal_index2].price,
+                                    image: meals[widget.meal_index2].image,
+                                    amount: 1,
+                                    meal_index: widget.meal_index2);
                                 wish_box.add(wishlist);
                               } else {
                                 isLiked2 = false;
