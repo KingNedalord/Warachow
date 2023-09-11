@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:warachow/profile.dart';
+import 'package:warachow/user%20pages/profile.dart';
 
-import 'adapters/meals_list.dart';
-import 'mainPage.dart';
+import '../adapters/meals_list.dart';
+import '../mainPage.dart';
 
 class Checkout_Page extends StatefulWidget {
   final total_price;
@@ -137,13 +137,23 @@ class _Checkout_PageState extends State<Checkout_Page> {
                                         style: TextStyle(
                                             fontSize: 12,
                                             fontWeight: FontWeight.w500)),
-                                    Text("x${meals_box.getAt(index)!.amount}",
-                                        style: TextStyle(
-                                            fontSize: 12,
-                                            color: Colors.grey,
-                                            fontWeight: FontWeight.w500)),
-                                    VerticalDivider(
-                                        color: Colors.grey, thickness: 1),
+                                    Text(
+                                      "x${meals_box.getAt(index)!.amount}",
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                        color: Colors.grey,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+
+                                    Container(height: 12, width: 2, color: Colors.grey, margin: EdgeInsets.symmetric(vertical: 8),),
+                                    // VerticalDivider(
+                                    //   indent: 5,
+                                    //   color: Colors.grey,
+                                    //   thickness: 1,
+                                    //   width: 30,
+                                    // ),
+
                                     Text(
                                         "💶 ${meals_box.getAt(index)!.amount * meals_box.getAt(index)!.price}",
                                         style: TextStyle(
@@ -244,12 +254,14 @@ class _Checkout_PageState extends State<Checkout_Page> {
                   onPressed: () {
                     int index2 = 0;
                     int length = meals_box.length;
-                    while (index2 != length){
+                    while (index2 != length) {
                       meals_box.deleteAt(index2);
                       index2++;
-                    };
-                    Navigator.push(context, CupertinoPageRoute(builder: (_) => Main_Page()));
-                    },
+                    }
+                    ;
+                    Navigator.push(context,
+                        CupertinoPageRoute(builder: (_) => Main_Page()));
+                  },
                   child: Text("Pay Now",
                       style: TextStyle(
                           fontSize: 12,

@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:warachow/profile.dart';
-import 'package:warachow/shopping_cart.dart';
+import 'package:warachow/user%20pages/profile.dart';
+import 'package:warachow/user%20pages/shopping_cart.dart';
 
-import 'adapters/meals_list.dart';
-import 'adapters/wishlist_adapter.dart';
-import 'mainPage.dart';
+import '../adapters/meals_list.dart';
+import '../adapters/wishlist_adapter.dart';
+import '../mainPage.dart';
 
 class WishList extends StatefulWidget {
   const WishList({super.key});

@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:warachow/welcome.dart';
+import 'package:warachow/welcome/welcome.dart';
 
-import 'adapters/information.dart';
-import 'adapters/meals_list.dart';
-import 'adapters/wishlist_adapter.dart';
-import 'mainPage.dart';
+import '../adapters/information.dart';
+import '../adapters/meals_list.dart';
+import '../adapters/wishlist_adapter.dart';
+import '../mainPage.dart';
 
 
 late Box box;

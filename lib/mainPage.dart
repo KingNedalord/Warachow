@@ -1,13 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:warachow/best_sellers.dart';
-import 'package:warachow/loyalty_points.dart';
-import 'package:warachow/profile.dart';
-import 'package:warachow/wishlist.dart';
+import 'package:warachow/food_pages.dart';
+import 'package:warachow/user%20pages/loyalty_points.dart';
+import 'package:warachow/user%20pages/profile.dart';
+import 'package:warachow/user%20pages/wishlist.dart';
 
 import 'adapters/information.dart';
-import 'main_dishes.dart';
 
 class Main_Page extends StatefulWidget {
   const Main_Page({super.key});
@@ -92,8 +91,10 @@ class _Main_PageState extends State<Main_Page> {
                     Navigator.push(
                         context,
                         CupertinoPageRoute(
-                            builder: (_) =>
-                                index == 0 ? Main_Dishes() : Best_Sellers()));
+                          builder: (_) => index == 0
+                              ? Food_Pages(meal_page: "meals1")
+                              : Food_Pages(meal_page: "meals2"),
+                        ));
                   },
                   child: Container(
                     child: Column(
@@ -161,8 +162,8 @@ class NavigationDrawer1 extends StatelessWidget {
                   child: Text("Profile",
                       style: TextStyle(fontSize: 25, color: Colors.white)),
                   onPressed: () {
-                    Navigator.push(context,
-                        CupertinoPageRoute(builder: (_) => Profile()));
+                    Navigator.push(
+                        context, CupertinoPageRoute(builder: (_) => Profile()));
                   })
             ],
           ),
@@ -199,9 +200,7 @@ class NavigationDrawer1 extends StatelessWidget {
           Row(
             children: [
               Container(
-                  width: 50,
-                  height: 50,
-                  child: Image.asset("assets/cart.png")),
+                  width: 50, height: 50, child: Image.asset("assets/cart.png")),
               Text("Payment Methods",
                   style: TextStyle(fontSize: 25, color: Colors.white))
             ],

@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:warachow/shopping_cart.dart';
-import 'adapters/information.dart';
+import 'package:warachow/user%20pages/shopping_cart.dart';
+import '../adapters/information.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});

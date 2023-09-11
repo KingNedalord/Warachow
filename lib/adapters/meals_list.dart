@@ -13,5 +13,5 @@ class Meals_list{
   int amount;
 
 
-  Meals_list({required this.meal_label,required this.price,required this.image,required this.amount});
+  Meals_list({required this.meal_label,required this.price,required this.image,required this.amount,});
 }

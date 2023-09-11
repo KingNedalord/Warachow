@@ -11,8 +11,7 @@ class Wishlist{
   String image;
   @HiveField(3)
   int amount;
-  @HiveField(4)
-  int meal_index;
 
-  Wishlist({required this.meal_label,required this.price,required this.image,required this.amount,required this.meal_index});
+
+  Wishlist({required this.meal_label,required this.price,required this.image,required this.amount});
 }

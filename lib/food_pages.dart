@@ -1,22 +1,23 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:warachow/meal_information.dart';
-import 'package:warachow/profile.dart';
-import 'package:warachow/shopping_cart.dart';
+import 'package:warachow/meal_info.dart';
+import 'package:warachow/user%20pages/profile.dart';
+import 'package:warachow/user%20pages/shopping_cart.dart';
 
 import 'adapters/information.dart';
 import 'adapters/meals_list.dart';
 import 'mainPage.dart';
 
-class Main_Dishes extends StatefulWidget {
-  const Main_Dishes({super.key});
+class Food_Pages extends StatefulWidget {
+  final String meal_page;
+  const Food_Pages({super.key,required this.meal_page});
 
   @override
-  State<Main_Dishes> createState() => _Main_DishesState();
+  State<Food_Pages> createState() => _Food_PagesState();
 }
 
-class _Main_DishesState extends State<Main_Dishes> {
+class _Food_PagesState extends State<Food_Pages> {
   late Box<Information> box;
 
   @override
@@ -25,8 +26,7 @@ class _Main_DishesState extends State<Main_Dishes> {
     super.initState();
     box = Hive.box("info");
   }
-
-  List<Meals_list> meals = [
+  List<Meals_list> meals1 = [
     Meals_list(
         meal_label: "Fried Rice", price: 5, image: "assets/11.png", amount: 1),
     Meals_list(
@@ -49,7 +49,29 @@ class _Main_DishesState extends State<Main_Dishes> {
         image: "assets/16.png",
         amount: 1)
   ];
-
+  List<Meals_list> meals2 = [
+    Meals_list(
+        meal_label: "Beef Burger", price: 5, image: "assets/21.png", amount: 1),
+    Meals_list(
+        meal_label: "Shawarma", price: 6, image: "assets/22.png", amount: 1),
+    Meals_list(
+        meal_label: "Cheesy Bread",
+        price: 8,
+        image: "assets/24.png",
+        amount: 1),
+    Meals_list(
+        meal_label: "Pizza Peperoni",
+        price: 3,
+        image: "assets/14.png",
+        amount: 1),
+    Meals_list(
+        meal_label: "Amala", price: 10, image: "assets/15.png", amount: 1),
+    Meals_list(
+        meal_label: "Jollof Spaghetti",
+        price: 5,
+        image: "assets/26.png",
+        amount: 1)
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,7 +84,7 @@ class _Main_DishesState extends State<Main_Dishes> {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            toolbarHeight: MediaQuery.of(context).size.height * 0.25,
+            toolbarHeight: MediaQuery.of(context).size.height * 0.27,
             backgroundColor: Color(0xFFFF785B),
             leading: Text(""),
             pinned: true,
@@ -72,8 +94,8 @@ class _Main_DishesState extends State<Main_Dishes> {
                     bottomRight: Radius.circular(12))),
             flexibleSpace: Column(
               children: [
-                Text(
-                  "Main Dishes",
+                Text(widget.meal_page == "meals1" ?"Main Dishes":
+                  "Best Sellers",
                   style: TextStyle(
                       color: Colors.white,
                       fontFamily: "EBG",
@@ -83,9 +105,10 @@ class _Main_DishesState extends State<Main_Dishes> {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.02,
                 ),
-                Text(
-                    "Find the best selling dishes. All\n"
-                    "meals are prepared fresh",
+                Text(widget.meal_page == "meals1" ?"Find the best selling dishes. All\n"
+                    "meals are prepared fresh":
+                    "Everyone's favourite dishes and\n"
+                        "takeouts.",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         color: Colors.white, fontFamily: "EBG", fontSize: 17)),
@@ -104,17 +127,16 @@ class _Main_DishesState extends State<Main_Dishes> {
                         border: OutlineInputBorder(
                             gapPadding: 20,
                             borderRadius:
-                                BorderRadius.all(Radius.circular(20)))),
+                            BorderRadius.all(Radius.circular(20)))),
                   ),
                 ),
               ],
-              // ),
             ),
           ),
           SliverGrid.builder(
             gridDelegate:
-                SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-            itemCount: meals.length,
+            SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+            itemCount: widget.meal_page == "meals1" ?meals1.length:meals2.length,
             itemBuilder: (context, index) {
               return Container(
                 margin: EdgeInsets.only(
@@ -124,14 +146,14 @@ class _Main_DishesState extends State<Main_Dishes> {
                 decoration: BoxDecoration(
                     border: Border(
                         bottom:
-                            BorderSide(color: Colors.grey[400]!, width: 4))),
+                        BorderSide(color: Colors.grey[400]!, width: 4))),
                 child: Column(
                   children: [
                     ClipRRect(
                       borderRadius: BorderRadius.circular(20), // Image border
                       child: SizedBox.fromSize(
                           size: Size.fromRadius(48), // Image radius
-                          child: Image.asset(meals[index].image)),
+                          child: Image.asset( widget.meal_page == "meals1" ?meals1[index].image:meals2[index].image)),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -139,12 +161,12 @@ class _Main_DishesState extends State<Main_Dishes> {
                         Column(
                           children: [
                             Text(
-                              meals[index].meal_label,
+                              widget.meal_page == "meals1" ?meals1[index].meal_label:meals2[index].meal_label,
                               style: TextStyle(fontSize: 20),
                             ),
                             Container(
                               margin: EdgeInsets.only(top:10),
-                             width: MediaQuery.of(context).size.width * 0.3,
+                              width: MediaQuery.of(context).size.width * 0.3,
                               height: MediaQuery.of(context).size.height * 0.05,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(15),
@@ -154,8 +176,7 @@ class _Main_DishesState extends State<Main_Dishes> {
                                   Navigator.push(
                                       context,
                                       CupertinoPageRoute(
-                                          builder: (_) => Meal_information(
-                                              meal_index: index)));
+                                          builder: (_) => Meal_Info(meal_index: index, meal_page: widget.meal_page)));
                                 },
                                 child: Text(
                                   "Buy Now",

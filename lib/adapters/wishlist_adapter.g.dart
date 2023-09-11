@@ -21,14 +21,13 @@ class WishlistAdapter extends TypeAdapter<Wishlist> {
       price: fields[1] as int,
       image: fields[2] as String,
       amount: fields[3] as int,
-      meal_index: fields[4] as int,
     );
   }
 
   @override
   void write(BinaryWriter writer, Wishlist obj) {
     writer
-      ..writeByte(5)
+      ..writeByte(4)
       ..writeByte(0)
       ..write(obj.meal_label)
       ..writeByte(1)
@@ -36,9 +35,7 @@ class WishlistAdapter extends TypeAdapter<Wishlist> {
       ..writeByte(2)
       ..write(obj.image)
       ..writeByte(3)
-      ..write(obj.amount)
-      ..writeByte(4)
-      ..write(obj.meal_index);
+      ..write(obj.amount);
   }
 
   @override
