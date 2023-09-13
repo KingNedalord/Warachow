@@ -30,7 +30,7 @@ class _Main_PageState extends State<Main_Page> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xFFFF785B),
-        actions: [Icon(Icons.shopping_cart), SizedBox(width: 10)],
+        actions: const [Icon(Icons.shopping_cart), SizedBox(width: 10)],
         elevation: 0,
       ),
       drawer: NavigationDrawer1(box: box),
@@ -39,11 +39,11 @@ class _Main_PageState extends State<Main_Page> {
           SliverAppBar(
               toolbarHeight: MediaQuery.of(context).size.height * 0.28,
               backgroundColor: Color(0xFFFF785B),
-              leading: Text(""),
+              leading: const Text(""),
               pinned: true,
               flexibleSpace: Column(
                 children: [
-                  Text(
+                  const Text(
                     "Welcome",
                     style: TextStyle(
                         color: Colors.white,
@@ -54,7 +54,7 @@ class _Main_PageState extends State<Main_Page> {
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.02,
                   ),
-                  Text(
+                  const Text(
                       "Homemade meals prepared with\n"
                       "love.  Richest  ingredients",
                       textAlign: TextAlign.center,
@@ -62,13 +62,13 @@ class _Main_PageState extends State<Main_Page> {
                           color: Colors.white,
                           fontFamily: "EBG",
                           fontSize: 20)),
-                  SizedBox(height: 5),
+                  const SizedBox(height: 5),
                   Container(
                     width: MediaQuery.of(context).size.width * 0.7,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(20)),
                         color: Colors.white),
-                    child: TextField(
+                    child:  TextField(
                       decoration: InputDecoration(
                           hintText: "Search Menu",
                           prefixIcon: Icon(Icons.search_outlined),
@@ -113,7 +113,7 @@ class _Main_PageState extends State<Main_Page> {
                               style: TextStyle(
                                   fontSize: 25, fontWeight: FontWeight.w700),
                             ),
-                            Icon(Icons.arrow_forward_ios_rounded)
+                            const Icon(Icons.arrow_forward_ios_rounded)
                           ],
                         )
                       ],

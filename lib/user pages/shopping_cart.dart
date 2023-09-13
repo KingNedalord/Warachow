@@ -58,8 +58,8 @@ class _Shopping_CartState extends State<Shopping_Cart> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 20, top: 10),
+                    const Padding(
+                      padding: EdgeInsets.only(left: 20, top: 10),
                       child: Text(
                         "Your Shopping Cart",
                         style: TextStyle(
@@ -175,12 +175,12 @@ class _Shopping_CartState extends State<Shopping_Cart> {
                                                       color: Colors.grey,
                                                       child: Text(
                                                           "${meals_box.getAt(index)!.amount}",
-                                                          style: TextStyle(
+                                                          style: const TextStyle(
                                                               fontSize: 17),
                                                           textAlign:
                                                               TextAlign.center)),
                                                   IconButton(
-                                                      icon: Icon(
+                                                      icon: const Icon(
                                                           CupertinoIcons.plus,
                                                           size: 15),
                                                       onPressed: () {
@@ -218,7 +218,7 @@ class _Shopping_CartState extends State<Shopping_Cart> {
                                               Row(children: [
                                                 Text(
                                                     "💶${meals_box.getAt(index)!.price * meals_box.getAt(index)!.amount}",
-                                                    style: TextStyle(
+                                                    style: const TextStyle(
                                                         fontSize: 20,
                                                         fontWeight:
                                                             FontWeight.w500)),
@@ -235,7 +235,7 @@ class _Shopping_CartState extends State<Shopping_Cart> {
                                                         meals_box.deleteAt(index);
                                                       });
                                                     },
-                                                    icon: Icon(
+                                                    icon: const Icon(
                                                       Icons.close,
                                                       size: 15,
                                                       color: Colors.red,
@@ -266,12 +266,12 @@ class _Shopping_CartState extends State<Shopping_Cart> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          Divider(
+                          const Divider(
                               indent: 15,
                               endIndent: 15,
                               color: Colors.grey,
                               thickness: 1),
-                          Column(
+                          const Column(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text("Purchase Total",
@@ -286,7 +286,7 @@ class _Shopping_CartState extends State<Shopping_Cart> {
                                   style: TextStyle(fontSize: 18))
                             ],
                           ),
-                          SizedBox(width: 10),
+                          const SizedBox(width: 10),
                           Column(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -296,7 +296,7 @@ class _Shopping_CartState extends State<Shopping_Cart> {
                               Container(
                                 width: MediaQuery.of(context).size.width * 0.26,
                                 height: MediaQuery.of(context).size.height * 0.05,
-                                child: TextField(
+                                child: const TextField(
                                   decoration: InputDecoration(
                                       border: OutlineInputBorder(),
                                       hoverColor: Color(0xFFFF785B),
@@ -304,7 +304,7 @@ class _Shopping_CartState extends State<Shopping_Cart> {
                                 ),
                               ),
                               Text("💶 ${(total_price / 100 * 5).round()}",
-                                  style: TextStyle(fontSize: 18),
+                                  style: const TextStyle(fontSize: 18),
                                   textAlign: TextAlign.center)
                             ],
                           )
@@ -314,7 +314,7 @@ class _Shopping_CartState extends State<Shopping_Cart> {
                     Container(
                       width: MediaQuery.of(context).size.width,
                       height: MediaQuery.of(context).size.height * 0.05,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           borderRadius: BorderRadius.only(
                               bottomRight: Radius.circular(10),
                               bottomLeft: Radius.circular(10)),
@@ -324,7 +324,7 @@ class _Shopping_CartState extends State<Shopping_Cart> {
                         children: [
                           Text(
                             "Sub Total     💶 ${total_price + (total_price / 100 * 5).round()}     ",
-                            style: TextStyle(color: Colors.white, fontSize: 18),
+                            style: const TextStyle(color: Colors.white, fontSize: 18),
                           )
                         ],
                       ),
@@ -337,18 +337,18 @@ class _Shopping_CartState extends State<Shopping_Cart> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    margin: EdgeInsets.all(15),
+                    margin: const EdgeInsets.all(15),
                     width: MediaQuery.of(context).size.width * 0.35,
                     height: MediaQuery.of(context).size.height * 0.05,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(30),
-                        color: Color(0xFFFF785B)),
+                        color: const Color(0xFFFF785B)),
                     child: MaterialButton(
                       onPressed: () {
                         Navigator.push(context,
                             CupertinoPageRoute(builder: (_) => Checkout_Page(total_price: total_price)));
                       },
-                      child: Text(
+                      child: const Text(
                         "Checkout",
                         style: TextStyle(color: Colors.white, fontSize: 18),
                         textAlign: TextAlign.center,
@@ -375,7 +375,7 @@ class _Shopping_CartState extends State<Shopping_Cart> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 IconButton(
-                    icon: Icon(Icons.person),
+                    icon: const Icon(Icons.person),
                     color: Colors.grey,
                     onPressed: () {
                       Navigator.push(context,
@@ -383,7 +383,7 @@ class _Shopping_CartState extends State<Shopping_Cart> {
                     }),
                 SizedBox(width: MediaQuery.of(context).size.width * 0.1),
                 IconButton(
-                  icon: Icon(Icons.home, color: Colors.grey),
+                  icon: const Icon(Icons.home, color: Colors.grey),
                   onPressed: () {
                     Navigator.push(context,
                         CupertinoPageRoute(builder: (_) => Main_Page()));
@@ -391,7 +391,7 @@ class _Shopping_CartState extends State<Shopping_Cart> {
                 ),
                 SizedBox(width: MediaQuery.of(context).size.width * 0.1),
                 IconButton(
-                    icon: Icon(Icons.shopping_cart),
+                    icon: const Icon(Icons.shopping_cart),
                     color: Colors.grey,
                     onPressed: () {
                       Navigator.pop(context);

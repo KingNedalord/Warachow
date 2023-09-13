@@ -96,7 +96,7 @@ class _Food_PagesState extends State<Food_Pages> {
               children: [
                 Text(widget.meal_page == "meals1" ?"Main Dishes":
                   "Best Sellers",
-                  style: TextStyle(
+                  style: const TextStyle(
                       color: Colors.white,
                       fontFamily: "EBG",
                       fontWeight: FontWeight.w500,
@@ -110,17 +110,17 @@ class _Food_PagesState extends State<Food_Pages> {
                     "Everyone's favourite dishes and\n"
                         "takeouts.",
                     textAlign: TextAlign.center,
-                    style: TextStyle(
+                    style: const TextStyle(
                         color: Colors.white, fontFamily: "EBG", fontSize: 17)),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.009,
                 ),
                 Container(
                   width: MediaQuery.of(context).size.width * 0.7,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(20)),
                       color: Colors.white),
-                  child: TextField(
+                  child: const TextField(
                     decoration: InputDecoration(
                         hintText: "Search Menu",
                         prefixIcon: Icon(Icons.search_outlined),
@@ -135,7 +135,7 @@ class _Food_PagesState extends State<Food_Pages> {
           ),
           SliverGrid.builder(
             gridDelegate:
-            SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+            const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
             itemCount: widget.meal_page == "meals1" ?meals1.length:meals2.length,
             itemBuilder: (context, index) {
               return Container(
@@ -152,7 +152,7 @@ class _Food_PagesState extends State<Food_Pages> {
                     ClipRRect(
                       borderRadius: BorderRadius.circular(20), // Image border
                       child: SizedBox.fromSize(
-                          size: Size.fromRadius(48), // Image radius
+                          size: const Size.fromRadius(48), // Image radius
                           child: Image.asset( widget.meal_page == "meals1" ?meals1[index].image:meals2[index].image)),
                     ),
                     Row(
@@ -178,7 +178,7 @@ class _Food_PagesState extends State<Food_Pages> {
                                       CupertinoPageRoute(
                                           builder: (_) => Meal_Info(meal_index: index, meal_page: widget.meal_page)));
                                 },
-                                child: Text(
+                                child: const Text(
                                   "Buy Now",
                                   style: TextStyle(
                                       color: Colors.white,
@@ -221,17 +221,17 @@ class _Food_PagesState extends State<Food_Pages> {
                     }),
                 SizedBox(width: MediaQuery.of(context).size.width * 0.1),
                 IconButton(
-                  icon: Icon(Icons.home, color: Colors.grey),
+                  icon: const Icon(Icons.home, color: Colors.grey),
                   onPressed: () {
                     Navigator.pop(context);
                   },
                 ),
                 SizedBox(width: MediaQuery.of(context).size.width * 0.1),
                 IconButton(
-                  icon: Icon(Icons.shopping_cart, color: Colors.grey),
+                  icon: const Icon(Icons.shopping_cart, color: Colors.grey),
                   onPressed: () {
                     Navigator.push(context,
-                        CupertinoPageRoute(builder: (_) => Shopping_Cart()));
+                        CupertinoPageRoute(builder: (_) => const Shopping_Cart()));
                   },
                 ),
               ],

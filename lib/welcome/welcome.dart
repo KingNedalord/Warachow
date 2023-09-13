@@ -14,7 +14,7 @@ class _WelcomeState extends State<Welcome> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             gradient: LinearGradient(
                 colors: [Colors.white, Color(0xFFd6ccc2), Colors.black],
                 begin: Alignment.topCenter,
@@ -31,20 +31,20 @@ class _WelcomeState extends State<Welcome> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Welcome to WaraChow",
+                  const Text("Welcome to WaraChow",
                       style: TextStyle(
                           fontWeight: FontWeight.w600,
                           fontSize: 23,
                           color: Colors.white,
                           fontFamily: "EBG")),
-                  Text(
+                  const Text(
                       "Order the best meals in Lagos and have \nthem delivered to your doorstep in little \nor no time.Doesn't that sound delicious",
                       style: TextStyle(
                           fontSize: 15,
                           color: Colors.white,
                           fontFamily: "EBG")),
                   ClipRRect(
-                      borderRadius: BorderRadius.all(
+                      borderRadius: const BorderRadius.all(
                         Radius.circular(40),
                       ),
                       child: MaterialButton(
@@ -55,7 +55,7 @@ class _WelcomeState extends State<Welcome> {
                         child: Container(
                           width: MediaQuery.of(context).size.width * 0.6,
                           height: MediaQuery.of(context).size.height * 0.08,
-                          child: Row(
+                          child: const Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text("Next",

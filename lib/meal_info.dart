@@ -109,7 +109,7 @@ class _Meal_InfoState extends State<Meal_Info> {
                             border: Border.all(color: Colors.white)),
                         child: Text(
                           widget.meal_page == "meals1"?meals1[widget.meal_index].meal_label:meals2[widget.meal_index].meal_label,
-                          style: TextStyle(fontSize: 15, color: Colors.white),
+                          style: const TextStyle(fontSize: 15, color: Colors.white),
                         ),
                       ),
                     ),
@@ -168,7 +168,7 @@ class _Meal_InfoState extends State<Meal_Info> {
                                     color: Colors.grey[700],
                                     fontWeight: FontWeight.w500)),
                             SizedBox(height: 10),
-                            Text(
+                            const Text(
                               "Our Friends Rice Is Made From\n"
                               "The Finest Ingredients And\n"
                               "Veggies. Every Single Dish Is\n"
@@ -186,14 +186,14 @@ class _Meal_InfoState extends State<Meal_Info> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         "Ingredients",
                         style: TextStyle(
                             fontSize: 20,
                             color: Colors.grey,
                             fontWeight: FontWeight.w500),
                       ),
-                      SizedBox(height: 15),
+                      const SizedBox(height: 15),
                       Image.asset("assets/ingredients.png"),
                     ],
                   ),
@@ -202,7 +202,7 @@ class _Meal_InfoState extends State<Meal_Info> {
                     height: MediaQuery.of(context).size.height * 0.05,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(40),
-                        color: Color(0xFFFF785B)),
+                        color: const Color(0xFFFF785B)),
                     child: MaterialButton(
                       onPressed: () {
                         Meals_list meals_list = Meals_list(meal_label: widget.meal_page == "meals1"?meals1[widget.meal_index].meal_label:meals2[widget.meal_index].meal_label, price: widget.meal_page == "meals1"?meals1[widget.meal_index].price:meals2[widget.meal_index].price, image: widget.meal_page == "meals1"?meals1[widget.meal_index].image:meals2[widget.meal_index].image, amount: widget.meal_page == "meals1"?meals1[widget.meal_index].amount:meals2[widget.meal_index].amount);
@@ -214,17 +214,17 @@ class _Meal_InfoState extends State<Meal_Info> {
                         children: [
                           Text(
                             "💶 ${widget.meal_page == "meals1"?meals1[widget.meal_index].price:meals2[widget.meal_index].price}",
-                            style: TextStyle(
+                            style: const TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.w500,
                                 fontSize: 18),
                           ),
-                          Text("Order Now ->",
+                          const Text("Order Now ->",
                               style: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.w500,
                                   fontSize: 18)),
-                          Icon(
+                          const Icon(
                             Icons.shopping_cart,
                             color: Colors.white,
                           )
