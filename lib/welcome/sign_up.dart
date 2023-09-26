@@ -32,6 +32,7 @@ class _Sign_UpState extends State<Sign_Up> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFFBEDEA),
+      resizeToAvoidBottomInset: false,
       body: Column(
         children: [
           SizedBox(height: MediaQuery.of(context).size.height * 0.08),

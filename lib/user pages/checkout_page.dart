@@ -28,6 +28,7 @@ class _Checkout_PageState extends State<Checkout_Page> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -146,7 +147,12 @@ class _Checkout_PageState extends State<Checkout_Page> {
                                       ),
                                     ),
 
-                                    Container(height: 12, width: 2, color: Colors.grey, margin: EdgeInsets.symmetric(vertical: 8),),
+                                    Container(
+                                      height: 12,
+                                      width: 2,
+                                      color: Colors.grey,
+                                      margin: EdgeInsets.symmetric(vertical: 8),
+                                    ),
                                     // VerticalDivider(
                                     //   indent: 5,
                                     //   color: Colors.grey,

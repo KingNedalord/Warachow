@@ -2,14 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
-
 import 'adapters/meals_list.dart';
 import 'adapters/wishlist_adapter.dart';
 
 class Meal_Info extends StatefulWidget {
   final String meal_page;
   final int meal_index;
-  const Meal_Info({super.key,required this.meal_index,required this.meal_page});
+
+  const Meal_Info(
+      {super.key, required this.meal_index, required this.meal_page});
 
   @override
   State<Meal_Info> createState() => _Meal_InfoState();
@@ -72,9 +73,10 @@ class _Meal_InfoState extends State<Meal_Info> {
   void initState() {
     // TODO: implement initState
     super.initState();
-   meals_box = Hive.box("meal");
+    meals_box = Hive.box("meal");
     wish_box = Hive.box("wishlist");
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -84,7 +86,20 @@ class _Meal_InfoState extends State<Meal_Info> {
             onDoubleTap: () {
               setState(() {
                 if (isLiked == false) {
-                  Wishlist wishlist = Wishlist(meal_label: widget.meal_page == "meals1"?meals1[widget.meal_index].meal_label:meals2[widget.meal_index].meal_label, price: widget.meal_page == "meals1"?meals1[widget.meal_index].price:meals2[widget.meal_index].price, image: widget.meal_page == "meals1"?meals1[widget.meal_index].image:meals2[widget.meal_index].image, amount: widget.meal_page == "meals1"?meals1[widget.meal_index].amount:meals2[widget.meal_index].amount);
+                  isLiked = true;
+                  Wishlist wishlist = Wishlist(
+                      meal_label: widget.meal_page == "meals1"
+                          ? meals1[widget.meal_index].meal_label
+                          : meals2[widget.meal_index].meal_label,
+                      price: widget.meal_page == "meals1"
+                          ? meals1[widget.meal_index].price
+                          : meals2[widget.meal_index].price,
+                      image: widget.meal_page == "meals1"
+                          ? meals1[widget.meal_index].image
+                          : meals2[widget.meal_index].image,
+                      amount: widget.meal_page == "meals1"
+                          ? meals1[widget.meal_index].amount
+                          : meals2[widget.meal_index].amount);
                   wish_box.add(wishlist);
                 } else {
                   isLiked = false;
@@ -108,7 +123,9 @@ class _Meal_InfoState extends State<Meal_Info> {
                             color: Colors.transparent,
                             border: Border.all(color: Colors.white)),
                         child: Text(
-                          widget.meal_page == "meals1"?meals1[widget.meal_index].meal_label:meals2[widget.meal_index].meal_label,
+                          widget.meal_page == "meals1"
+                              ? meals1[widget.meal_index].meal_label
+                              : meals2[widget.meal_index].meal_label,
                           style: TextStyle(fontSize: 15, color: Colors.white),
                         ),
                       ),
@@ -119,7 +136,10 @@ class _Meal_InfoState extends State<Meal_Info> {
                         Container(
                             width: MediaQuery.of(context).size.width,
                             height: MediaQuery.of(context).size.height * 0.3,
-                            child: Image.asset(widget.meal_page == "meals1"?meals1[widget.meal_index].image:meals2[widget.meal_index].image,
+                            child: Image.asset(
+                                widget.meal_page == "meals1"
+                                    ? meals1[widget.meal_index].image
+                                    : meals2[widget.meal_index].image,
                                 fit: BoxFit.contain)),
                       ],
                     ),
@@ -131,7 +151,19 @@ class _Meal_InfoState extends State<Meal_Info> {
                             setState(() {
                               if (isLiked == false) {
                                 isLiked = true;
-                                Wishlist wishlist = Wishlist(meal_label: widget.meal_page == "meals1"?meals1[widget.meal_index].meal_label:meals2[widget.meal_index].meal_label, price: widget.meal_page == "meals1"?meals1[widget.meal_index].price:meals2[widget.meal_index].price, image: widget.meal_page == "meals1"?meals1[widget.meal_index].image:meals2[widget.meal_index].image, amount: widget.meal_page == "meals1"?meals1[widget.meal_index].amount:meals2[widget.meal_index].amount);
+                                Wishlist wishlist = Wishlist(
+                                    meal_label: widget.meal_page == "meals1"
+                                        ? meals1[widget.meal_index].meal_label
+                                        : meals2[widget.meal_index].meal_label,
+                                    price: widget.meal_page == "meals1"
+                                        ? meals1[widget.meal_index].price
+                                        : meals2[widget.meal_index].price,
+                                    image: widget.meal_page == "meals1"
+                                        ? meals1[widget.meal_index].image
+                                        : meals2[widget.meal_index].image,
+                                    amount: widget.meal_page == "meals1"
+                                        ? meals1[widget.meal_index].amount
+                                        : meals2[widget.meal_index].amount);
                                 wish_box.add(wishlist);
                               } else {
                                 isLiked = false;
@@ -205,7 +237,19 @@ class _Meal_InfoState extends State<Meal_Info> {
                         color: Color(0xFFFF785B)),
                     child: MaterialButton(
                       onPressed: () {
-                        Meals_list meals_list = Meals_list(meal_label: widget.meal_page == "meals1"?meals1[widget.meal_index].meal_label:meals2[widget.meal_index].meal_label, price: widget.meal_page == "meals1"?meals1[widget.meal_index].price:meals2[widget.meal_index].price, image: widget.meal_page == "meals1"?meals1[widget.meal_index].image:meals2[widget.meal_index].image, amount: widget.meal_page == "meals1"?meals1[widget.meal_index].amount:meals2[widget.meal_index].amount);
+                        Meals_list meals_list = Meals_list(
+                            meal_label: widget.meal_page == "meals1"
+                                ? meals1[widget.meal_index].meal_label
+                                : meals2[widget.meal_index].meal_label,
+                            price: widget.meal_page == "meals1"
+                                ? meals1[widget.meal_index].price
+                                : meals2[widget.meal_index].price,
+                            image: widget.meal_page == "meals1"
+                                ? meals1[widget.meal_index].image
+                                : meals2[widget.meal_index].image,
+                            amount: widget.meal_page == "meals1"
+                                ? meals1[widget.meal_index].amount
+                                : meals2[widget.meal_index].amount);
                         meals_box.add(meals_list);
                         Navigator.pop(context);
                       },
@@ -213,7 +257,7 @@ class _Meal_InfoState extends State<Meal_Info> {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Text(
-                            "💶 ${widget.meal_page == "meals1"?meals1[widget.meal_index].price:meals2[widget.meal_index].price}",
+                            "💶 ${widget.meal_page == "meals1" ? meals1[widget.meal_index].price : meals2[widget.meal_index].price}",
                             style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.w500,
