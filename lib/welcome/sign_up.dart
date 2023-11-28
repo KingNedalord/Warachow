@@ -40,7 +40,7 @@ class _Sign_UpState extends State<Sign_Up> {
             "assets/logomock.png",
           ),
           SizedBox(height: MediaQuery.of(context).size.height * 0.04),
-          Text(
+          const Text(
             "Registration",
             style: TextStyle(fontSize: 40, fontFamily: "EBG"),
           ),
@@ -49,14 +49,14 @@ class _Sign_UpState extends State<Sign_Up> {
             padding: const EdgeInsets.all(10.0),
             child: TextField(
               controller: loginContr,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   hintText: "Your Name",
                   border: OutlineInputBorder(
                       gapPadding: 20,
                       borderRadius: BorderRadius.all(Radius.circular(20)))),
             ),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Padding(
             padding: const EdgeInsets.all(10.0),
             child: TextField(
@@ -69,9 +69,9 @@ class _Sign_UpState extends State<Sign_Up> {
                       borderRadius: BorderRadius.all(Radius.circular(20)))),
             ),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           ClipRRect(
-              borderRadius: BorderRadius.all(
+              borderRadius: const BorderRadius.all(
                 Radius.circular(10),
               ),
               child: MaterialButton(
@@ -93,7 +93,7 @@ class _Sign_UpState extends State<Sign_Up> {
                         CupertinoPageRoute(builder: (_) => Main_Page()));
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text("All fields must be filled")));
+                        const SnackBar(content: Text("All fields must be filled")));
                     SharedPreferences pref =
                         await SharedPreferences.getInstance();
                     text = await pref.setBool('txt', false);
@@ -103,7 +103,7 @@ class _Sign_UpState extends State<Sign_Up> {
                 child: Container(
                   width: MediaQuery.of(context).size.width * 0.6,
                   height: MediaQuery.of(context).size.height * 0.06,
-                  child: Row(
+                  child: const Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text("Never Hungry Again!",

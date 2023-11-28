@@ -31,7 +31,7 @@ class _Loyalty_PointsState extends State<Loyalty_Points> {
               onPressed: () {
                 Navigator.pop(context);
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.arrow_back_ios_new,
                 color: Colors.black,
               )),
@@ -42,8 +42,8 @@ class _Loyalty_PointsState extends State<Loyalty_Points> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 20),
+              const Padding(
+                padding: EdgeInsets.only(left: 20),
                 child: Text(
                   "Loyalty Points",
                   style: TextStyle(
@@ -89,15 +89,15 @@ class _Loyalty_PointsState extends State<Loyalty_Points> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("509 Points",
+                  const Text("509 Points",
                       style:
                           TextStyle(fontSize: 30, fontWeight: FontWeight.w700)),
-                  Text(
+                  const Text(
                       "Convert to Purchase Voucher\n"
                       "Code.",
                       style: TextStyle(fontSize: 20),
                       textAlign: TextAlign.center),
-                  Text(
+                  const Text(
                       "You need up to 1000 point to get 1000\n"
                       "OFF your order.\n"
                       "Order today to get more points.",
@@ -109,7 +109,7 @@ class _Loyalty_PointsState extends State<Loyalty_Points> {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(40),
                         color: Color(0xFFFF785B)),
-                    child: Row(
+                    child: const Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text("Convert",
@@ -138,7 +138,7 @@ class _Loyalty_PointsState extends State<Loyalty_Points> {
               children: [
                 SizedBox(width: MediaQuery.of(context).size.width * 0.27),
                 IconButton(
-                    icon: Icon(Icons.person),
+                    icon: const Icon(Icons.person),
                     color: Colors.grey,
                     onPressed: () {
                       Navigator.push(context,
@@ -146,14 +146,14 @@ class _Loyalty_PointsState extends State<Loyalty_Points> {
                     }),
                 SizedBox(width: MediaQuery.of(context).size.width * 0.1),
                 IconButton(
-                  icon: Icon(Icons.home, color: Colors.grey),
+                  icon: const Icon(Icons.home, color: Colors.grey),
                   onPressed: () {
                     Navigator.push(context,
                         CupertinoPageRoute(builder: (_) => Main_Page()));
                   },
                 ),
                 SizedBox(width: MediaQuery.of(context).size.width * 0.1),
-                Icon(Icons.shopping_cart, color: Colors.grey),
+                const Icon(Icons.shopping_cart, color: Colors.grey),
                 SizedBox(width: MediaQuery.of(context).size.width * 0.23),
               ],
             ),

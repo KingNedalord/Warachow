@@ -37,7 +37,7 @@ class _WishListState extends State<WishList> {
         backgroundColor: Colors.white,
         elevation: 0,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios_new, color: Colors.black, size: 25),
+          icon: const Icon(Icons.arrow_back_ios_new, color: Colors.black, size: 25),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -51,28 +51,28 @@ class _WishListState extends State<WishList> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
-              margin: EdgeInsets.only(top: 10),
-              padding: EdgeInsets.only(left: 15),
+              margin: const EdgeInsets.only(top: 10),
+              padding: const EdgeInsets.only(left: 15),
               height: MediaQuery.of(context).size.height * 0.15,
               width: MediaQuery.of(context).size.width,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     "Wishlist",
                     style: TextStyle(
                         fontSize: 35,
                         color: Colors.black,
                         fontWeight: FontWeight.w700),
                   ),
-                  SizedBox(height: 15),
+                  const SizedBox(height: 15),
                   Divider(
                     color: Colors.grey[400],
                     height: 1,
                     thickness: 3,
                     endIndent: 30,
                   ),
-                  SizedBox(height: 5),
+                  const SizedBox(height: 5),
                   Text(
                     "You have favourited ${wish_box.length} dishes",
                     style: TextStyle(fontSize: 12),
@@ -89,7 +89,7 @@ class _WishListState extends State<WishList> {
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
                   if (wish_box.isEmpty) {
-                    return Row(
+                    return const Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
@@ -109,13 +109,13 @@ class _WishListState extends State<WishList> {
                             Container(
                               height: MediaQuery.of(context).size.height * 0.3,
                               width: MediaQuery.of(context).size.width - 30,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                   borderRadius: BorderRadius.only(
                                       topRight: Radius.circular(15),
                                       topLeft: Radius.circular(15)),
                                   color: Colors.teal),
                               child: ClipRRect(
-                                  borderRadius: BorderRadius.only(
+                                  borderRadius: const BorderRadius.only(
                                       topLeft: Radius.circular(15),
                                       topRight: Radius.circular(15)),
                                   child: Image.asset(
@@ -134,7 +134,7 @@ class _WishListState extends State<WishList> {
                                         0.08,
                                     width:
                                         MediaQuery.of(context).size.width * 0.4,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                         color: Color(0xFFFF785B),
                                         borderRadius: BorderRadius.only(
                                             topRight: Radius.circular(15),
@@ -146,10 +146,10 @@ class _WishListState extends State<WishList> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(wish_box.getAt(index)!.meal_label,
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                 fontSize: 20,
                                                 fontWeight: FontWeight.w400)),
-                                        Text("with Coke",
+                                        const Text("with Coke",
                                             style: TextStyle(fontSize: 13)),
                                       ],
                                     ),
@@ -159,7 +159,7 @@ class _WishListState extends State<WishList> {
                                         0.08,
                                     width: MediaQuery.of(context).size.width *
                                         0.15,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                         color: Color(0xFFFF785B),
                                         borderRadius: BorderRadius.only(
                                             topLeft: Radius.circular(15),
@@ -194,7 +194,7 @@ class _WishListState extends State<WishList> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text("💶 ${wish_box.getAt(index)!.price}",
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             fontSize: 30,
                                             color: Color(0xFFFF785B),
                                             fontWeight: FontWeight.w600))
@@ -202,7 +202,7 @@ class _WishListState extends State<WishList> {
                                 )),
                           ],
                         ),
-                        SizedBox(width: 10)
+                        const SizedBox(width: 10)
                       ],
                     );
                   }
@@ -233,7 +233,7 @@ class _WishListState extends State<WishList> {
                             }
                             Navigator.push(context, CupertinoPageRoute(builder: (_)=>Shopping_Cart()));
                           } else {
-                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                                 content: Text(
                               "Your Wishlist is Empty",
                               style: TextStyle(
@@ -243,7 +243,7 @@ class _WishListState extends State<WishList> {
                             )));
                           }
                         },
-                        child: Text(
+                        child: const Text(
                           "Buy Now",
                           style: TextStyle(
                               color: Colors.white, fontWeight: FontWeight.w600),
@@ -269,7 +269,7 @@ class _WishListState extends State<WishList> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 IconButton(
-                    icon: Icon(Icons.person),
+                    icon: const Icon(Icons.person),
                     color: Colors.grey,
                     onPressed: () {
                       Navigator.push(context,
@@ -277,7 +277,7 @@ class _WishListState extends State<WishList> {
                     }),
                 SizedBox(width: MediaQuery.of(context).size.width * 0.1),
                 IconButton(
-                  icon: Icon(Icons.home, color: Colors.grey),
+                  icon: const Icon(Icons.home, color: Colors.grey),
                   onPressed: () {
                     Navigator.push(context,
                         CupertinoPageRoute(builder: (_) => Main_Page()));
@@ -285,7 +285,7 @@ class _WishListState extends State<WishList> {
                 ),
                 SizedBox(width: MediaQuery.of(context).size.width * 0.1),
                 IconButton(
-                    icon: Icon(Icons.arrow_back_ios_new),
+                    icon: const Icon(Icons.arrow_back_ios_new),
                     color: Colors.grey,
                     onPressed: () {
                       Navigator.pop(context);

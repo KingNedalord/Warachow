@@ -51,8 +51,8 @@ class _Checkout_PageState extends State<Checkout_Page> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 20),
+                  const Padding(
+                    padding: EdgeInsets.only(left: 20),
                     child: Text(
                       "Checkout Page",
                       style: TextStyle(
@@ -74,7 +74,7 @@ class _Checkout_PageState extends State<Checkout_Page> {
             Container(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height * 0.06,
-              child: Row(
+              child: const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text("Your Order Details",
@@ -99,7 +99,7 @@ class _Checkout_PageState extends State<Checkout_Page> {
                         Container(
                           width: MediaQuery.of(context).size.width,
                           height: MediaQuery.of(context).size.height * 0.04,
-                          child: Row(
+                          child: const Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text("Product Name",
@@ -119,7 +119,7 @@ class _Checkout_PageState extends State<Checkout_Page> {
                             ],
                           ),
                         ),
-                        Divider(
+                        const Divider(
                           indent: 10,
                           endIndent: 10,
                           color: Colors.grey,
@@ -135,12 +135,12 @@ class _Checkout_PageState extends State<Checkout_Page> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(meals_box.getAt(index)!.meal_label,
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             fontSize: 12,
                                             fontWeight: FontWeight.w500)),
                                     Text(
                                       "x${meals_box.getAt(index)!.amount}",
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         fontSize: 12,
                                         color: Colors.grey,
                                         fontWeight: FontWeight.w500,
@@ -162,7 +162,7 @@ class _Checkout_PageState extends State<Checkout_Page> {
 
                                     Text(
                                         "💶 ${meals_box.getAt(index)!.amount * meals_box.getAt(index)!.price}",
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             fontSize: 12,
                                             fontWeight: FontWeight.w500))
                                   ],
@@ -173,7 +173,7 @@ class _Checkout_PageState extends State<Checkout_Page> {
                         Container(
                           width: MediaQuery.of(context).size.width,
                           height: MediaQuery.of(context).size.height * 0.042,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               borderRadius: BorderRadius.only(
                                   bottomRight: Radius.circular(10),
                                   bottomLeft: Radius.circular(10)),
@@ -181,18 +181,18 @@ class _Checkout_PageState extends State<Checkout_Page> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text("                 Total",
+                              const Text("                 Total",
                                   style: TextStyle(
                                       fontSize: 12,
                                       color: Colors.white,
                                       fontWeight: FontWeight.w500)),
-                              VerticalDivider(
+                              const VerticalDivider(
                                   thickness: 1,
                                   endIndent: 10,
                                   width: 30,
                                   color: Colors.grey),
                               Text("💶 ${widget.total_price}",
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontSize: 12,
                                       color: Colors.white,
                                       fontWeight: FontWeight.w500))
@@ -206,7 +206,7 @@ class _Checkout_PageState extends State<Checkout_Page> {
                     padding: EdgeInsets.all(10),
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height * 0.1,
-                    child: Column(
+                    child: const Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text("Use Saved Address",
@@ -268,7 +268,7 @@ class _Checkout_PageState extends State<Checkout_Page> {
                     Navigator.push(context,
                         CupertinoPageRoute(builder: (_) => Main_Page()));
                   },
-                  child: Text("Pay Now",
+                  child: const Text("Pay Now",
                       style: TextStyle(
                           fontSize: 12,
                           color: Colors.white,
@@ -291,7 +291,7 @@ class _Checkout_PageState extends State<Checkout_Page> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 IconButton(
-                    icon: Icon(Icons.person),
+                    icon: const Icon(Icons.person),
                     color: Colors.grey,
                     onPressed: () {
                       Navigator.push(context,
@@ -299,7 +299,7 @@ class _Checkout_PageState extends State<Checkout_Page> {
                     }),
                 SizedBox(width: MediaQuery.of(context).size.width * 0.1),
                 IconButton(
-                  icon: Icon(Icons.home, color: Colors.grey),
+                  icon: const Icon(Icons.home, color: Colors.grey),
                   onPressed: () {
                     Navigator.push(context,
                         CupertinoPageRoute(builder: (_) => Main_Page()));
@@ -307,7 +307,7 @@ class _Checkout_PageState extends State<Checkout_Page> {
                 ),
                 SizedBox(width: MediaQuery.of(context).size.width * 0.1),
                 IconButton(
-                    icon: Icon(Icons.shopping_cart),
+                    icon: const Icon(Icons.shopping_cart),
                     color: Colors.grey,
                     onPressed: () {
                       Navigator.pop(context);

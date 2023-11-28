@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "661116073445",
+    "project_id": "warachow-f4555",
+    "storage_bucket": "warachow-f4555.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:661116073445:android:07a227b73af0bc7efceb0c",
+        "android_client_info": {
+          "package_name": "com.example.warachow"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5XkLTToeVVSHHK3H1BdBoGHoRt5e9Ci4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

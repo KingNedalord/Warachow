@@ -44,8 +44,8 @@ class _ProfileState extends State<Profile> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 20),
+              const Padding(
+                padding: EdgeInsets.only(left: 20),
                 child: Text(
                   "Profile",
                   style: TextStyle(
@@ -99,7 +99,7 @@ class _ProfileState extends State<Profile> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
+                            const Text(
                               "  Email:",
                               style: TextStyle(color: Colors.grey),
                             ),
@@ -125,7 +125,7 @@ class _ProfileState extends State<Profile> {
                   children: [
                     SizedBox(width: MediaQuery.of(context).size.width * 0.08),
                     Container(
-                        padding: EdgeInsets.all(4),
+                        padding: const EdgeInsets.all(4),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(8),
                             color: Colors.white,
@@ -135,7 +135,7 @@ class _ProfileState extends State<Profile> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
+                            const Text(
                               "  Date Of Birth:",
                               style: TextStyle(color: Colors.grey),
                             ),
@@ -161,7 +161,7 @@ class _ProfileState extends State<Profile> {
                   children: [
                     SizedBox(width: MediaQuery.of(context).size.width * 0.08),
                     Container(
-                        padding: EdgeInsets.all(4),
+                        padding: const EdgeInsets.all(4),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(8),
                             color: Colors.white,
@@ -171,7 +171,7 @@ class _ProfileState extends State<Profile> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
+                            const Text(
                               "  Address:",
                               style: TextStyle(color: Colors.grey),
                             ),
@@ -206,7 +206,7 @@ class _ProfileState extends State<Profile> {
                       context: context,
                       builder: (context) {
                         return AlertDialog(
-                          title: Text("Edit window"),
+                          title: const Text("Edit window"),
                           content: Container(
                             width: MediaQuery.of(context).size.width * 0.4,
                             height: MediaQuery.of(context).size.height * 0.30,
@@ -217,7 +217,7 @@ class _ProfileState extends State<Profile> {
                                   padding: const EdgeInsets.all(8.0),
                                   child: TextField(
                                     controller: emailcontr,
-                                    decoration: InputDecoration(
+                                    decoration: const InputDecoration(
                                       border: OutlineInputBorder(),
                                       hintText: "Enter email",
                                     ),
@@ -227,7 +227,7 @@ class _ProfileState extends State<Profile> {
                                   padding: const EdgeInsets.all(8.0),
                                   child: TextField(
                                     controller: datecontr,
-                                    decoration: InputDecoration(
+                                    decoration: const InputDecoration(
                                       border: OutlineInputBorder(),
                                       hintText: "Enter birth date",
                                     ),
@@ -237,7 +237,7 @@ class _ProfileState extends State<Profile> {
                                   padding: const EdgeInsets.all(8.0),
                                   child: TextField(
                                     controller: addresscontr,
-                                    decoration: InputDecoration(
+                                    decoration: const InputDecoration(
                                       border: OutlineInputBorder(),
                                       hintText: "Enter Address",
                                     ),
@@ -251,7 +251,7 @@ class _ProfileState extends State<Profile> {
                                 onPressed: () {
                                   Navigator.pop(context);
                                 },
-                                child: Text("Cancel")),
+                                child: const Text("Cancel")),
                             TextButton(
                                 onPressed: () {
                                   setState(() {
@@ -269,12 +269,12 @@ class _ProfileState extends State<Profile> {
                                     }
                                   });
                                 },
-                                child: Text("Save")),
+                                child: const Text("Save")),
                           ],
                         );
                       });
                 },
-                child: Text(
+                child: const Text(
                   "Edit Profile",
                   style: TextStyle(fontSize: 20, color: Colors.black),
                   textAlign: TextAlign.center,
@@ -295,17 +295,17 @@ class _ProfileState extends State<Profile> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(Icons.person),
+                const Icon(Icons.person),
                 SizedBox(width: MediaQuery.of(context).size.width * 0.1),
                 IconButton(
-                  icon: Icon(Icons.home, color: Colors.grey),
+                  icon: const Icon(Icons.home, color: Colors.grey),
                   onPressed: () {
                     Navigator.pop(context);
                   },
                 ),
                 SizedBox(width: MediaQuery.of(context).size.width * 0.1),
                 IconButton(
-                  icon: Icon(Icons.shopping_cart, color: Colors.grey),
+                  icon: const Icon(Icons.shopping_cart, color: Colors.grey),
                   onPressed: () {
                     Navigator.push(context,CupertinoPageRoute(builder: (_)=> Shopping_Cart()));
                   },
