@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
@@ -7,6 +8,7 @@ import 'package:warachow/welcome/welcome.dart';
 import '../adapters/information.dart';
 import '../adapters/meals_list.dart';
 import '../adapters/wishlist_adapter.dart';
+import '../firebase_options.dart';
 import '../mainPage.dart';
 
 
@@ -31,6 +33,10 @@ void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter<Wishlist>(WishlistAdapter());
   wish_box = await Hive.openBox<Wishlist>("wishlist");
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(MaterialApp(
     home:
     text == true ? Main_Page() : Welcome(),

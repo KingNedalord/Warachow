@@ -15,3 +15,11 @@ class Meals_list{
 
   Meals_list({required this.meal_label,required this.price,required this.image,required this.amount,});
 }
+
+class Main_Dishes{
+  String label;
+  int price;
+  String image;
+
+  Main_Dishes({required this.label, required this.price,required this.image});
+}

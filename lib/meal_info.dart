@@ -213,7 +213,9 @@ class _Meal_InfoState extends State<Meal_Info> {
                             )
                           ],
                         ),
-                        Expanded(child: Image.asset("assets/reviews.png"))
+                        Expanded(
+                          child: Image.asset("assets/reviews.png"),
+                        )
                       ]),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

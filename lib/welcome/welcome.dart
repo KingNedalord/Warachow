@@ -1,5 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:warachow/adapters/meals_list.dart';
 import 'package:warachow/welcome/sign_up.dart';
 
 class Welcome extends StatefulWidget {
@@ -48,8 +50,9 @@ class _WelcomeState extends State<Welcome> {
                         Radius.circular(40),
                       ),
                       child: MaterialButton(
-                        onPressed: () {
-                          Navigator.push(context, CupertinoPageRoute(builder: (_) => Sign_Up()));
+                        onPressed: ()  {
+                          Navigator.push(context,
+                              CupertinoPageRoute(builder: (_) => Sign_Up()));
                         },
                         color: Colors.white,
                         child: Container(
